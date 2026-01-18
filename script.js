@@ -22,8 +22,7 @@ function createNode(person) {
     });
 
     btn.addEventListener("click", () => {
-      const isOpen = childrenWrap.style.display === "block";
-      childrenWrap.style.display = isOpen ? "none" : "block";
+        childrenWrap.classList.toggle("open");
     });
   } else {
     btn.style.opacity = "0.9";

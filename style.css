@@ -53,5 +53,14 @@ h1 {
   border-left: 2px solid #e0e0e0;
   padding-left: 12px;
   margin-top: 8px;
-  display: none; /* скрыто по умолчанию */
+
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 250ms ease, opacity 200ms ease;
+}
+
+.children.open {
+  max-height: 1000px; /* достаточно большое */
+  opacity: 1;
 }

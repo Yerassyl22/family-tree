@@ -1,37 +1,163 @@
 {
   "id": "gp",
   "name": "Бабушка",
-"birth": "1952-03-12",
+  "birth": "1952-03-12",
   "city": "Алматы",
   "desc": "Любит готовить и выращивает цветы",
   "photo": "photos/babushka.jpg",
   "partner": {
     "id": "gd",
     "name": "Дедушка",
-"birth": "1948-11-05",
+    "birth": "1948-11-05",
     "city": "Алматы",
     "desc": "Любит рыбалку",
-    "photo": "photos/dedushka.jpg"
+    "photo": "photos/dedushka.jpg",
+    "partner": null,
+    "children": []
   },
   "children": [
     {
       "id": "c1",
-      "name": "Ребёнок 1",
-      "birth": "1978-01-02",
-      "city": "Астана",
-      "desc": "",
+      "name": "Касым Ага",
+      "birth": "1972-08-27",
+      "city": "Оскемен",
+      "desc": "Папа",
       "photo": "photos/c1.jpg",
+      "partner": {
+        "id": "c1p",
+        "name": "Шинар Апай",
+        "birth": "1979-01-19",
+        "city": "Оскемен",
+        "desc": "Мама",
+        "photo": "",
+        "partner": null,
+        "children": [
+          {
+            "id": "g1",
+            "name": "Аида",
+            "birth": "2004-03-01",
+            "city": "Астана",
+            "desc": "",
+            "photo": "photos/g1.jpg",
+            "partner": null,
+            "children": []
+          },
+          {
+            "id": "g2",
+            "name": "Аяна",
+            "birth": "2015-01-11",
+            "city": "Оскемен",
+            "desc": "",
+            "photo": "",
+            "partner": null,
+            "children": []
+          }
+        ]
+      }
+    },
+
+
+
+
+
+
+
+
+
+    {
+      "id": "c2",
+      "name": "Ребёнок 2",
+      "birth": "1981-07-21",
+      "city": "Алматы",
+      "desc": "Любит путешествия",
+      "photo": "",
+      "partner": {
+        "id": "c2p",
+        "name": "Партнёр 2",
+        "birth": "1982-02-10",
+        "city": "Алматы",
+        "desc": "",
+        "photo": "",
+        "partner": null,
+        "children": []
+      },
+      "children": []
+    },
+
+
+
+
+
+
+
+
+    {
+      "id": "c3",
+      "name": "Ребёнок 3",
+      "birth": "1985-12-03",
+      "city": "Шымкент",
+      "desc": "",
+      "photo": "",
+      "partner": {
+        "id": "c3p",
+        "name": "Партнёр 3",
+        "birth": "1986-02-28",
+        "city": "Шымкент",
+        "desc": "",
+        "photo": "",
+        "partner": null,
+        "children": [
+          {
+            "id": "g3",
+            "name": "Внук 3",
+            "birth": "2012-05-05",
+            "city": "Шымкент",
+            "desc": "",
+            "photo": "",
+            "partner": null,
+            "children": []
+          }
+        ]
+      },
       "children": [
         {
-          "id": "g1",
-          "name": "Внучка 1",
-          "birth": "2004-03-01",
-          "city": "Астана",
+          "id": "g3",
+          "name": "Внук 3",
+          "birth": "2012-05-05",
+          "city": "Шымкент",
           "desc": "",
-          "photo": "photos/g1.jpg",
+          "photo": "",
+          "partner": null,
           "children": []
         }
       ]
+    },
+
+
+
+
+
+
+
+    
+    {
+      "id": "c4",
+      "name": "Ребёнок 4",
+      "birth": "1990-04-30",
+      "city": "Караганда",
+      "desc": "",
+      "photo": "",
+      "partner": {
+        "id": "c4p",
+        "name": "Партнёр 4",
+        "birth": "1991-09-09",
+        "city": "Караганда",
+        "desc": "",
+        "photo": "",
+        "partner": null,
+        "children": []
+      },
+      "children": []
     }
   ]
 }

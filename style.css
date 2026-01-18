@@ -8,16 +8,9 @@ body {
   color: #111;
 }
 
-/* ===== Header ===== */
 .header {
-  max-width: 900px;
-  margin: 0 auto 16px auto;
-
-  position: sticky;
-  top: 0;
-  background: #fafafa;
-  padding: 12px 0;
-  z-index: 10;
+  max-width: 1100px;
+  margin: 0 auto 12px auto;
 }
 
 h1 {
@@ -25,14 +18,11 @@ h1 {
   font-size: 22px;
 }
 
-/* ===== Controls ===== */
 .controls {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  align-items: center;
 }
-
 
 .controls button {
   padding: 8px 12px;
@@ -43,49 +33,77 @@ h1 {
   font-size: 14px;
 }
 
-.controls button:active {
-  transform: scale(0.97);
-}
+.controls button:active { transform: scale(0.97); }
 
-/* ===== Layout ===== */
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.tree {
-  margin-top: 10px;
+/* ===== Pan/Zoom viewport ===== */
+.viewport {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fafafa;
+  touch-action: none; /* важно для pinch/drag */
+  border: 1px solid #eee;
 }
 
-/* ===== Couple (grandparents) ===== */
+.board {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.lines {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ===== Tree content ===== */
+.tree {
+  padding: 30px 60px;
+  min-width: 900px;
+}
+
+/* верхняя пара по центру */
 .couple {
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  justify-content: center;
   align-items: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;        /* ВАЖНО: не переносить партнёра вниз */
 }
 
-/* ===== Card ===== */
+
+/* карточка человека */
 .card {
   background: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 16px;
   padding: 10px;
-  width: 260px;
+  width: 270px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   cursor: pointer;
 }
 
-.card:active {
-  transform: scale(0.99);
-}
+.card:active { transform: scale(0.99); }
 
 .card-top {
   display: flex;
   gap: 10px;
 }
 
-/* photo 3x4 */
+/* фото 3x4 */
 .photo {
   width: 72px;
   height: 96px;
@@ -103,14 +121,19 @@ h1 {
 }
 
 .name {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 16px;
   line-height: 1.2;
 }
 
 .birth {
   font-size: 13px;
-  opacity: 0.7;
+  opacity: 0.75;
+}
+
+.city {
+  font-size: 13px;
+  opacity: 0.8;
 }
 
 .info {
@@ -119,58 +142,44 @@ h1 {
   margin-top: 4px;
 }
 
-/* ===== Children with connectors ===== */
-.node {
-  margin: 10px 0;
-}
-
+/* узел + дети */
+.node { margin: 12px 0; }
 .children {
-  margin-left: 18px;
-  padding-left: 14px;
-  margin-top: 10px;
-  border-left: 2px solid #e0e0e0;
+  margin-top: 16px;
 
-  overflow: hidden;
+  display: flex;
+  gap: 22px;              /* БОЛЬШЕ расстояние между семьями */
+  align-items: flex-start;
+  flex-wrap: nowrap;      /* один ряд */
+  overflow-x: auto;       /* если много детей — скролл по горизонтали */
+  padding: 12px 12px;
+
   max-height: 0;
   opacity: 0;
   transition: max-height 250ms ease, opacity 200ms ease;
 }
 
 .children.open {
-  max-height: 2000px;
+  max-height: 3000px;
   opacity: 1;
 }
 
-/* each child row + horizontal connector */
 .child-row {
-  position: relative;
-  padding-left: 16px;
-  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 320px;       /* ширина “семьи”, чтобы не прижимались */
 }
 
-.child-row::before {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: 24px;
-  width: 14px;
-  height: 2px;
-  background: #e0e0e0;
-}
 
-/* ===== Mobile tweaks ===== */
+/* убираем старые отступы/линии списка */
+.node { margin: 0; }
+
+
+/* mobile */
 @media (max-width: 520px) {
-  .card {
-    width: 100%;
-  }
-  .photo {
-    width: 64px;
-    height: 86px;
-  }
-}
-
-
-.city {
-  font-size: 13px;
-  opacity: 0.8;
+  .tree { min-width: 700px; }
+  .card { width: 100%; }
 }

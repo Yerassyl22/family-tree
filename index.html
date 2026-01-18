@@ -9,19 +9,19 @@
 <body>
   <header class="header">
     <h1>Семейное древо</h1>
-
     <div class="controls">
-  <button id="expandAll">Развернуть всё</button>
-  <button id="collapseAll">Свернуть всё</button>
-</div>
-
-
-
-
+      <button id="expandAll" type="button">Развернуть всё</button>
+      <button id="collapseAll" type="button">Свернуть всё</button>
+    </div>
   </header>
 
   <main class="container">
-    <div id="tree" class="tree"></div>
+    <div id="viewport" class="viewport">
+      <svg id="lines" class="lines"></svg>
+      <div id="board" class="board">
+        <div id="tree" class="tree"></div>
+      </div>
+    </div>
   </main>
 
   <script src="script.js"></script>

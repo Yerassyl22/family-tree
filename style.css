@@ -64,3 +64,23 @@ h1 {
   max-height: 1000px; /* достаточно большое */
   opacity: 1;
 }
+
+.controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.controls button:active {
+  transform: scale(0.97);
+}

@@ -43,3 +43,19 @@ function createNode(person) {
     console.error(e);
   }
 })();
+
+
+function expandAll() {
+  document.querySelectorAll(".children").forEach((el) => {
+    el.classList.add("open");
+  });
+}
+
+function collapseAll() {
+  document.querySelectorAll(".children").forEach((el) => {
+    el.classList.remove("open");
+  });
+}
+
+document.getElementById("expandAll").addEventListener("click", expandAll);
+document.getElementById("collapseAll").addEventListener("click", collapseAll);

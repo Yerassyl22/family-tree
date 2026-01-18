@@ -1,21 +1,57 @@
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 16px;
+  background: #fafafa;
+  color: #111;
 }
 
-.person {
-    cursor: pointer;
-    padding: 6px 10px;
-    margin: 5px 0;
-    background: #f0f0f0;
-    border-radius: 6px;
-    width: fit-content;
+.header {
+  max-width: 900px;
+  margin: 0 auto 16px auto;
+}
+
+h1 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.node {
+  margin: 10px 0;
+}
+
+.person-btn {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.person-btn:active {
+  transform: scale(0.99);
 }
 
 .children {
-    margin-left: 30px;
-}
-
-.hidden {
-    display: none;
+  margin-left: 18px;
+  border-left: 2px solid #e0e0e0;
+  padding-left: 12px;
+  margin-top: 8px;
+  display: none; /* скрыто по умолчанию */
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Семейное древо</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Семейное древо</h2>
+
+<div class="person" onclick="toggle('children1')">
+    👵 Бабушка + 👴 Дедушка
+</div>
+
+<div id="children1" class="children hidden">
+    <div class="person" onclick="toggle('grandchildren1')">👨 Ребёнок 1</div>
+    <div class="person">👩 Ребёнок 2</div>
+    <div class="person">👨 Ребёнок 3</div>
+    <div class="person">👩 Ребёнок 4</div>
+
+    <div id="grandchildren1" class="children hidden">
+        <div class="person">👶 Внук 1</div>
+        <div class="person">👶 Внук 2</div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

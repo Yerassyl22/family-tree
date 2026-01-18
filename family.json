@@ -1,29 +1,33 @@
 {
   "id": "gp",
   "name": "Бабушка",
-  "birthYear": 1952,
-  "info": "Живёт в Алматы",
+"birth": "1952-03-12",
+  "city": "Алматы",
+  "desc": "Любит готовить и выращивает цветы",
   "photo": "photos/babushka.jpg",
   "partner": {
     "id": "gd",
     "name": "Дедушка",
-    "birthYear": 1948,
-    "info": "Живёт в Алматы",
+"birth": "1948-11-05",
+    "city": "Алматы",
+    "desc": "Любит рыбалку",
     "photo": "photos/dedushka.jpg"
   },
   "children": [
     {
       "id": "c1",
       "name": "Ребёнок 1",
-      "birthYear": 1978,
-      "info": "Астана",
+      "birth": "1978-01-02",
+      "city": "Астана",
+      "desc": "",
       "photo": "photos/c1.jpg",
       "children": [
         {
           "id": "g1",
-          "name": "Внук 1",
-          "birthYear": 2004,
-          "info": "Алматы",
+          "name": "Внучка 1",
+          "birth": "2004-03-01",
+          "city": "Астана",
+          "desc": "",
           "photo": "photos/g1.jpg",
           "children": []
         }

@@ -177,3 +177,9 @@ h1 {
     height: 86px;
   }
 }
+
+
+.city {
+  font-size: 13px;
+  opacity: 0.8;
+}

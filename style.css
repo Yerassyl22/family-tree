@@ -33,15 +33,6 @@ h1 {
   align-items: center;
 }
 
-.controls input {
-  flex: 1;
-  min-width: 180px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  background: #fff;
-}
 
 .controls button {
   padding: 8px 12px;

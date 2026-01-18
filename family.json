@@ -1,15 +1,33 @@
 {
-  "name": "Бабушка + Дедушка",
+  "id": "gp",
+  "name": "Бабушка",
+  "birthYear": 1952,
+  "info": "Живёт в Алматы",
+  "photo": "photos/babushka.jpg",
+  "partner": {
+    "id": "gd",
+    "name": "Дедушка",
+    "birthYear": 1948,
+    "info": "Живёт в Алматы",
+    "photo": "photos/dedushka.jpg"
+  },
   "children": [
     {
-      "name": "Ребёнок первый",
+      "id": "c1",
+      "name": "Ребёнок 1",
+      "birthYear": 1978,
+      "info": "Астана",
+      "photo": "photos/c1.jpg",
       "children": [
-        { "name": "👶 Внук уан", "children": [] },
-        { "name": "👶 Внук 2", "children": [] }
+        {
+          "id": "g1",
+          "name": "Внук 1",
+          "birthYear": 2004,
+          "info": "Алматы",
+          "photo": "photos/g1.jpg",
+          "children": []
+        }
       ]
-    },
-    { "name": "Ребёнок 2", "children": [] },
-    { "name": "Ребёнок 3", "children": [] },
-    { "name": "Ребёнок 4", "children": [] }
+    }
   ]
 }

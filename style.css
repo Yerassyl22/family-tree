@@ -8,89 +8,44 @@ body {
   color: #111;
 }
 
+/* ===== Header ===== */
 .header {
   max-width: 900px;
   margin: 0 auto 16px auto;
-    position: sticky;
+
+  position: sticky;
   top: 0;
   background: #fafafa;
   padding: 12px 0;
   z-index: 10;
 }
 
-
 h1 {
-  margin: 0 0 6px 0;
+  margin: 0 0 10px 0;
   font-size: 22px;
 }
 
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.node {
-  margin: 10px 0;
-}
-
-.person-btn {
-  width: 100%;
-  text-align: left;
-  border: 1px solid #e6e6e6;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-}
-
-.person-btn span {
-  display: inline-block;
-}
-
-.person-btn .arrow {
-  opacity: 0.55;
-  font-size: 14px;
-}
-
-.person-btn:active {
-  transform: scale(0.99);
-}
-
-
-.children {
-  margin-left: 18px;
-  border-left: 2px solid #e0e0e0;
-  padding-left: 12px;
-  margin-top: 8px;
-
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 250ms ease, opacity 200ms ease;
-}
-
-.children.open {
-  max-height: 1000px; /* достаточно большое */
-  opacity: 1;
-}
-
+/* ===== Controls ===== */
 .controls {
-  margin-top: 10px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.controls input {
+  flex: 1;
+  min-width: 180px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #fff;
 }
 
 .controls button {
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
   border: 1px solid #ddd;
   background: #fff;
   cursor: pointer;
@@ -101,11 +56,124 @@ h1 {
   transform: scale(0.97);
 }
 
-.controls input {
-  flex: 1;
-  min-width: 180px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+/* ===== Layout ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tree {
+  margin-top: 10px;
+}
+
+/* ===== Couple (grandparents) ===== */
+.couple {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  padding: 10px;
+  width: 260px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+.card:active {
+  transform: scale(0.99);
+}
+
+.card-top {
+  display: flex;
+  gap: 10px;
+}
+
+/* photo 3x4 */
+.photo {
+  width: 72px;
+  height: 96px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #eee;
+  flex: 0 0 auto;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.birth {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.info {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+/* ===== Children with connectors ===== */
+.node {
+  margin: 10px 0;
+}
+
+.children {
+  margin-left: 18px;
+  padding-left: 14px;
+  margin-top: 10px;
+  border-left: 2px solid #e0e0e0;
+
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 250ms ease, opacity 200ms ease;
+}
+
+.children.open {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+/* each child row + horizontal connector */
+.child-row {
+  position: relative;
+  padding-left: 16px;
+  margin: 10px 0;
+}
+
+.child-row::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 24px;
+  width: 14px;
+  height: 2px;
+  background: #e0e0e0;
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 520px) {
+  .card {
+    width: 100%;
+  }
+  .photo {
+    width: 64px;
+    height: 86px;
+  }
 }

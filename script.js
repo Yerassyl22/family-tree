@@ -4,109 +4,109 @@ async function loadFamily() {
   return await res.json();
 }
 
-function createNode(person) {
-  const node = document.createElement("div");
-  node.className = "node";
+function countDescendants(person) {
+  if (!person.children || person.children.length === 0) return 0;
+  let total = person.children.length;
+  person.children.forEach((c) => (total += countDescendants(c)));
+  return total;
+}
 
-  const btn = document.createElement("button");
-  btn.className = "person-btn";
-  btn.type = "button";
+function createCard(person, hasChildren) {
+  const card = document.createElement("div");
+  card.className = "card";
 
-  // Имя + стрелка
-  btn.innerHTML = `<span>${person.name}</span><span class="arrow">▶</span>`;
-  btn.dataset.name = (person.name || "").toLowerCase();
+  const descendants = countDescendants(person);
+  const subtitle = [
+    person.birthYear ? `Год: ${person.birthYear}` : "",
+    descendants ? `Потомков: ${descendants}` : ""
+  ].filter(Boolean).join(" • ");
+
+  card.innerHTML = `
+    <div class="card-top">
+      <img class="photo" src="${person.photo || ""}" alt="">
+      <div class="card-meta">
+        <div class="name">${person.name || "Без имени"}</div>
+        <div class="birth">${subtitle || ""}</div>
+        <div class="info">${person.info || ""}</div>
+      </div>
+    </div>
+  `;
+
+  if (!hasChildren) card.style.cursor = "default";
+  return card;
+}
+
+function createPersonNode(person) {
+  const wrap = document.createElement("div");
+  wrap.className = "node";
+
+  const hasChildren = person.children && person.children.length > 0;
+  const card = createCard(person, hasChildren);
 
   const childrenWrap = document.createElement("div");
   childrenWrap.className = "children";
 
-  if (person.children && person.children.length > 0) {
+  if (hasChildren) {
     person.children.forEach((child) => {
-      childrenWrap.appendChild(createNode(child));
+      const row = document.createElement("div");
+      row.className = "child-row";
+      row.appendChild(createPersonNode(child));
+      childrenWrap.appendChild(row);
     });
 
-    btn.addEventListener("click", () => {
+    card.addEventListener("click", () => {
       childrenWrap.classList.toggle("open");
-      const arrow = btn.querySelector(".arrow");
-      arrow.textContent = childrenWrap.classList.contains("open") ? "▼" : "▶";
     });
-  } else {
-    // Если детей нет — убираем стрелку
-    const arrow = btn.querySelector(".arrow");
-    if (arrow) arrow.textContent = "";
-    btn.style.opacity = "0.95";
   }
 
-  node.appendChild(btn);
-  node.appendChild(childrenWrap);
-  return node;
+  wrap.appendChild(card);
+  wrap.appendChild(childrenWrap);
+  return wrap;
 }
 
-async function init() {
-  try {
-    const family = await loadFamily();
+function createCoupleRoot(root) {
+  // root = бабушка, root.partner = дедушка (или наоборот)
+  const container = document.createElement("div");
 
+  const couple = document.createElement("div");
+  couple.className = "couple";
+
+  const left = createCard(root, (root.children || []).length > 0);
+  const right = root.partner ? createCard(root.partner, false) : null;
+
+  // клик по “паре” раскрывает детей
+  const childrenWrap = document.createElement("div");
+  childrenWrap.className = "children";
+
+  if (root.children && root.children.length > 0) {
+    root.children.forEach((child) => {
+      const row = document.createElement("div");
+      row.className = "child-row";
+      row.appendChild(createPersonNode(child));
+      childrenWrap.appendChild(row);
+    });
+
+    left.addEventListener("click", () => childrenWrap.classList.toggle("open"));
+    if (right) right.addEventListener("click", () => childrenWrap.classList.toggle("open"));
+  }
+
+  couple.appendChild(left);
+  if (right) couple.appendChild(right);
+
+  container.appendChild(couple);
+  container.appendChild(childrenWrap);
+  return container;
+}
+
+(async function init() {
+  try {
+    const data = await loadFamily();
     const tree = document.getElementById("tree");
     tree.innerHTML = "";
-    tree.appendChild(createNode(family));
-
-    // Кнопки "развернуть/свернуть всё"
-    const expandBtn = document.getElementById("expandAll");
-    const collapseBtn = document.getElementById("collapseAll");
-
-    if (expandBtn) {
-      expandBtn.addEventListener("click", () => {
-        document.querySelectorAll(".children").forEach((el) => el.classList.add("open"));
-        document.querySelectorAll(".person-btn .arrow").forEach((a) => {
-          if (a.textContent) a.textContent = "▼";
-        });
-      });
-    }
-
-    if (collapseBtn) {
-      collapseBtn.addEventListener("click", () => {
-        document.querySelectorAll(".children").forEach((el) => el.classList.remove("open"));
-        document.querySelectorAll(".person-btn .arrow").forEach((a) => {
-          if (a.textContent) a.textContent = "▶";
-        });
-      });
-    }
-
-    // Поиск по имени
-    const searchInput = document.getElementById("search");
-    if (searchInput) {
-      searchInput.addEventListener("input", (e) => {
-        const q = e.target.value.trim().toLowerCase();
-
-        document.querySelectorAll(".person-btn").forEach((btn) => {
-          const name = btn.dataset.name || "";
-          const match = q && name.includes(q);
-
-          // подсветка совпадений
-          btn.style.outline = match ? "2px solid #999" : "none";
-
-          // раскрываем ветку, где есть совпадение (чтобы было видно)
-          if (match) {
-            const children = btn.closest(".node")?.querySelector(":scope > .children");
-            if (children) {
-              children.classList.add("open");
-              const arrow = btn.querySelector(".arrow");
-              if (arrow && arrow.textContent) arrow.textContent = "▼";
-            }
-          }
-
-          // если поиск пустой — убираем подсветку
-          if (!q) btn.style.outline = "none";
-        });
-      });
-    }
+    tree.appendChild(createCoupleRoot(data));
   } catch (e) {
-    const tree = document.getElementById("tree");
-    if (tree) {
-      tree.textContent =
-        "Ошибка загрузки данных. Проверь family.json и запуск через Live Server/GitHub Pages.";
-    }
+    document.getElementById("tree").textContent =
+      "Ошибка загрузки. Проверь family.json и наличие фото.";
     console.error(e);
   }
-}
-
-init();
+})();

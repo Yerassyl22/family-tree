@@ -1,19 +1,8 @@
-// Пока просто “данные в коде” (следующий шаг — вынесем в JSON)
-const family = {
-  name: "👵 Бабушка + 👴 Дедушка",
-  children: [
-    {
-      name: "👨 Ребёнок 1",
-      children: [
-        { name: "👶 Внук 1", children: [] },
-        { name: "👶 Внук 2", children: [] },
-      ],
-    },
-    { name: "👩 Ребёнок 2", children: [] },
-    { name: "👨 Ребёнок 3", children: [] },
-    { name: "👩 Ребёнок 4", children: [] },
-  ],
-};
+async function loadFamily() {
+  const res = await fetch("family.json");
+  if (!res.ok) throw new Error("Не удалось загрузить family.json");
+  return await res.json();
+}
 
 function createNode(person) {
   const node = document.createElement("div");
@@ -27,7 +16,6 @@ function createNode(person) {
   const childrenWrap = document.createElement("div");
   childrenWrap.className = "children";
 
-  // Рисуем детей рекурсивно
   if (person.children && person.children.length > 0) {
     person.children.forEach((child) => {
       childrenWrap.appendChild(createNode(child));
@@ -38,7 +26,6 @@ function createNode(person) {
       childrenWrap.style.display = isOpen ? "none" : "block";
     });
   } else {
-    // если детей нет — кнопку можно сделать “без раскрытия”
     btn.style.opacity = "0.9";
   }
 
@@ -47,4 +34,13 @@ function createNode(person) {
   return node;
 }
 
-document.getElementById("tree").appendChild(createNode(family));
+(async function init() {
+  try {
+    const family = await loadFamily();
+    document.getElementById("tree").appendChild(createNode(family));
+  } catch (e) {
+    document.getElementById("tree").textContent =
+      "Ошибка загрузки данных. Проверь family.json и запуск через Live Server/GitHub Pages.";
+    console.error(e);
+  }
+})();

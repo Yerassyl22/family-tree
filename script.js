@@ -12,6 +12,8 @@ function createNode(person) {
   btn.className = "person-btn";
   btn.type = "button";
   btn.textContent = person.name;
+  btn.dataset.name = person.name.toLowerCase();
+
 
   const childrenWrap = document.createElement("div");
   childrenWrap.className = "children";
@@ -59,3 +61,33 @@ function collapseAll() {
 
 document.getElementById("expandAll").addEventListener("click", expandAll);
 document.getElementById("collapseAll").addEventListener("click", collapseAll);
+
+
+const searchInput = document.getElementById("search");
+
+function applySearch(query) {
+  const q = query.trim().toLowerCase();
+
+  document.querySelectorAll(".person-btn").forEach((btn) => {
+    const name = btn.dataset.name || "";
+    const node = btn.closest(".node");
+    const children = node.querySelector(":scope > .children");
+
+    if (!q) {
+      btn.style.outline = "none";
+      return;
+    }
+
+    if (name.includes(q)) {
+      btn.style.outline = "2px solid #999";
+      // раскрываем путь вниз (чтобы было видно)
+      if (children) children.classList.add("open");
+    } else {
+      btn.style.outline = "none";
+    }
+  });
+}
+
+searchInput.addEventListener("input", (e) => {
+  applySearch(e.target.value);
+});

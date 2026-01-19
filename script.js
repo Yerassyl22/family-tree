@@ -23,33 +23,53 @@ function calcAge(dateStr) {
   return age;
 }
 
-function ageWord(age) {
-  const n = Math.abs(age) % 100;
-  const n1 = n % 10;
-  if (n >= 11 && n <= 19) return "лет";
-  if (n1 === 1) return "год";
-  if (n1 >= 2 && n1 <= 4) return "года";
+function ageWord(age){
+  if (age % 10 === 1 && age % 100 !== 11) return "год";
+  if ([2,3,4].includes(age % 10) && ![12,13,14].includes(age % 100)) return "года";
   return "лет";
 }
 
+
 function birthLine(p) {
   if (!p.birth) return "";
-  const date = formatDate(p.birth);
-  const age = calcAge(p.birth);
-  if (age === null) return date;
-  return `${date} • ${age} ${ageWord(age)}`;
+
+  const date = new Date(p.birth);
+  if (isNaN(date)) return "";
+
+  // полная дата: 12 января 1977
+  const fullDate = date.toLocaleDateString("ru-RU", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+
+  // возраст
+  const today = new Date();
+  let age = today.getFullYear() - date.getFullYear();
+  const m = today.getMonth() - date.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < date.getDate())) {
+    age--;
+  }
+
+  return `
+    <div class="birth-date">${fullDate}</div>
+    <div class="birth-age">${age} ${ageWord(age)}</div>
+  `;
 }
+
+
 
 function closeAllInside(container) {
   container.querySelectorAll(".children.open").forEach((el) => el.classList.remove("open"));
 }
 
-function personHTML(p) {
+function personHTML(p){
+  const tagClass = p.tag ? ` tag-${p.tag}` : "";
   return `
-    <div class="person">
+    <div class="person${tagClass}">
       <img class="photo" src="${p.photo || ""}" alt="">
       <div class="card-meta">
-        <div class="name">${p.name || "Без имени"}</div>
+        <div class="name">${p.name || ""}</div>
         <div class="birth">${birthLine(p)}</div>
         <div class="city">${p.city || ""}</div>
         <div class="info">${p.desc || ""}</div>
@@ -57,6 +77,7 @@ function personHTML(p) {
     </div>
   `;
 }
+
 
 
 /* 1 карточка = семья (1 или 2 человека) */

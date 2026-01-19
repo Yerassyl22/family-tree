@@ -21,6 +21,9 @@
       "city": "Оскемен",
       "desc": "Папа",
       "photo": "",
+      "tag": "blood",
+
+
       "partner": {
         "id": "fam1_p",
         "name": "Кайыржан Ата",
@@ -76,6 +79,9 @@
       "city": "Алматы",
       "desc": "",
       "photo": "photos/c2.jpg",
+      "tag": "blood",
+
+
       "partner": {
         "id": "fam2_p",
         "name": "Женя Ата",
@@ -130,6 +136,8 @@
       "city": "Шымкент",
       "desc": "",
       "photo": "photos/c3.jpg",
+      "tag": "blood",
+
       "partner": {
         "id": "fam3_p",
         "name": "Тетя Света",
@@ -167,6 +175,8 @@
       "city": "Караганда",
       "desc": "",
       "photo": "photos/c4.jpg",
+      "tag": "blood",
+
       "partner": {
         "id": "fam4_p",
         "name": "ТуранБей",
@@ -183,6 +193,8 @@
           "city": "Караганда",
           "desc": "",
           "photo": "",
+            "tag": "blood",
+
           "partner": {
             "id": "fam4_c1_p",
             "name": "Алия женге",

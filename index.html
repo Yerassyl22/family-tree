@@ -7,22 +7,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header class="header">
-    <h1>Семейное древо</h1>
     <div class="controls">
       <button id="expandAll" type="button">Развернуть всё</button>
       <button id="collapseAll" type="button">Свернуть всё</button>
     </div>
   </header>
 
-  <main class="container">
- <div id="viewport" class="viewport">
-    <div id="board" class="board">
-     <svg id="lines" class="lines"></svg>
-     <div id="tree" class="tree"></div>
-</div>
-
+  <!-- ДЕРЕВО НА ВЕСЬ ОСТАЛЬНОЙ ЭКРАН -->
+  <main class="tree-layout">
+    <div id="viewport" class="viewport">
+      <div id="board" class="board">
+        <svg id="lines" class="lines"></svg>
+        <div id="tree" class="tree"></div>
       </div>
+    </div>
   </main>
 
   <script src="script.js"></script>

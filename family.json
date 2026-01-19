@@ -1,163 +1,245 @@
 {
-  "id": "gp",
-  "name": "Бабушка",
+  "id": "root",
+  "name": "Балауса Апа",
   "birth": "1952-03-12",
   "city": "Алматы",
-  "desc": "Любит готовить и выращивает цветы",
+  "desc": "",
   "photo": "photos/babushka.jpg",
   "partner": {
-    "id": "gd",
-    "name": "Дедушка",
+    "id": "root_p",
+    "name": "Мухтар Ата",
     "birth": "1948-11-05",
     "city": "Алматы",
-    "desc": "Любит рыбалку",
-    "photo": "photos/dedushka.jpg",
-    "partner": null,
-    "children": []
+    "desc": "",
+    "photo": "photos/dedushka.jpg"
   },
   "children": [
     {
-      "id": "c1",
-      "name": "Касым Ага",
+      "id": "fam1",
+      "name": "Салтанат Апай",
       "birth": "1972-08-27",
       "city": "Оскемен",
       "desc": "Папа",
-      "photo": "photos/c1.jpg",
+      "photo": "",
       "partner": {
-        "id": "c1p",
-        "name": "Шинар Апай",
+        "id": "fam1_p",
+        "name": "Кайыржан Ата",
         "birth": "1979-01-19",
         "city": "Оскемен",
         "desc": "Мама",
-        "photo": "",
-        "partner": null,
-        "children": [
-          {
-            "id": "g1",
-            "name": "Аида",
-            "birth": "2004-03-01",
-            "city": "Астана",
-            "desc": "",
-            "photo": "photos/g1.jpg",
-            "partner": null,
-            "children": []
-          },
-          {
-            "id": "g2",
-            "name": "Аяна",
-            "birth": "2015-01-11",
-            "city": "Оскемен",
-            "desc": "",
-            "photo": "",
-            "partner": null,
-            "children": []
-          }
-        ]
-      }
-    },
-
-
-
-
-
-
-
-
-
-    {
-      "id": "c2",
-      "name": "Ребёнок 2",
-      "birth": "1981-07-21",
-      "city": "Алматы",
-      "desc": "Любит путешествия",
-      "photo": "",
-      "partner": {
-        "id": "c2p",
-        "name": "Партнёр 2",
-        "birth": "1982-02-10",
-        "city": "Алматы",
-        "desc": "",
-        "photo": "",
-        "partner": null,
-        "children": []
-      },
-      "children": []
-    },
-
-
-
-
-
-
-
-
-    {
-      "id": "c3",
-      "name": "Ребёнок 3",
-      "birth": "1985-12-03",
-      "city": "Шымкент",
-      "desc": "",
-      "photo": "",
-      "partner": {
-        "id": "c3p",
-        "name": "Партнёр 3",
-        "birth": "1986-02-28",
-        "city": "Шымкент",
-        "desc": "",
-        "photo": "",
-        "partner": null,
-        "children": [
-          {
-            "id": "g3",
-            "name": "Внук 3",
-            "birth": "2012-05-05",
-            "city": "Шымкент",
-            "desc": "",
-            "photo": "",
-            "partner": null,
-            "children": []
-          }
-        ]
+        "photo": ""
       },
       "children": [
         {
-          "id": "g3",
-          "name": "Внук 3",
-          "birth": "2012-05-05",
-          "city": "Шымкент",
+          "id": "fam1_c1",
+          "name": "Назкен",
+          "birth": "2004-03-01",
+          "city": "Астана",
           "desc": "",
           "photo": "",
-          "partner": null,
+          "children": []
+        },
+        {
+          "id": "fam1_c2",
+          "name": "Еркин",
+          "birth": "2015-01-11",
+          "city": "Оскемен",
+          "desc": "",
+          "photo": "",
+
+          "children": [
+            {
+                "id": "fam1_c2",
+                "name": "Айым",
+                 "birth": "2015-01-11",
+                 "city": "Оскемен",
+                 "desc": "",
+                 "photo": ""
+            },
+            {
+                          "id": "fam1_c2",
+          "name": "Арман",
+          "birth": "2015-01-11",
+          "city": "Оскемен",
+          "desc": "",
+          "photo": ""
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "fam2",
+      "name": "Бальзок Нане",
+      "birth": "1974-05-10",
+      "city": "Алматы",
+      "desc": "",
+      "photo": "photos/c2.jpg",
+      "partner": {
+        "id": "fam2_p",
+        "name": "Женя Ата",
+        "birth": "1976-12-15",
+        "city": "Алматы",
+        "desc": "",
+        "photo": "photos/c2p.jpg"
+      },
+      "children": [
+        {
+          "id": "fam2_c1",
+          "name": "Акжаркын Ага",
+          "birth": "2000-04-04",
+          "city": "Алматы",
+          "desc": "",
+          "photo": "",
+          "partner": {
+            "id": "fam2_c1_p",
+            "name": "Тогжан женге",
+            "birth": "2000-07-07",
+            "city": "Алматы",
+            "desc": "",
+            "photo": ""
+          },
+          "children": [
+            {
+                 "id": "fam2_c1",
+                 "name": "Тайыр",
+                 "birth": "2000-04-04",
+                 "city": "Алматы",
+                 "desc": "",
+                 "photo": ""
+            }
+          ]
+        },
+        {
+          "id": "fam2_c2",
+          "name": "Улан ага",
+          "birth": "2003-09-09",
+          "city": "Алматы",
+          "desc": "",
+          "photo": "",
           "children": []
         }
       ]
     },
 
-
-
-
-
-
-
-    
     {
-      "id": "c4",
-      "name": "Ребёнок 4",
-      "birth": "1990-04-30",
+      "id": "fam3",
+      "name": "Айдар Ага",
+      "birth": "1977-02-20",
+      "city": "Шымкент",
+      "desc": "",
+      "photo": "photos/c3.jpg",
+      "partner": {
+        "id": "fam3_p",
+        "name": "Тетя Света",
+        "birth": "1978-03-03",
+        "city": "Шымкент",
+        "desc": "",
+        "photo": "photos/c3p.jpg"
+      },
+      "children": [
+        {
+          "id": "fam3_c1",
+          "name": "Дакось",
+          "birth": "2002-01-01",
+          "city": "Шымкент",
+          "desc": "",
+          "photo": "",
+          "children": []
+        },
+        {
+          "id": "fam3_c2",
+          "name": "Диана",
+          "birth": "2006-06-06",
+          "city": "Шымкент",
+          "desc": "",
+          "photo": "",
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "fam4",
+      "name": "Саулет Нане",
+      "birth": "1980-11-11",
       "city": "Караганда",
       "desc": "",
-      "photo": "",
+      "photo": "photos/c4.jpg",
       "partner": {
-        "id": "c4p",
-        "name": "Партнёр 4",
-        "birth": "1991-09-09",
+        "id": "fam4_p",
+        "name": "ТуранБей",
+        "birth": "1981-12-12",
         "city": "Караганда",
         "desc": "",
-        "photo": "",
-        "partner": null,
-        "children": []
+        "photo": "photos/c4p.jpg"
       },
-      "children": []
+      "children": [
+        {
+          "id": "fam4_c1",
+          "name": "Азат Ага",
+          "birth": "2005-05-05",
+          "city": "Караганда",
+          "desc": "",
+          "photo": "",
+          "partner": {
+            "id": "fam4_c1_p",
+            "name": "Алия женге",
+            "birth": "2005-08-08",
+            "city": "Караганда",
+            "desc": "",
+            "photo": ""
+          },
+          "children": [
+            {
+                "id": "fam4_c1",
+          "name": "Амира",
+          "birth": "2005-05-05",
+          "city": "Караганда",
+          "desc": "",
+          "photo": ""
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "fam5",
+      "name": "Папа",
+      "birth": "1983-04-04",
+      "city": "Павлодар",
+      "desc": "",
+      "photo": "photos/c5.jpg",
+      "partner": {
+        "id": "fam5_p",
+        "name": "Мама",
+        "birth": "1984-07-07",
+        "city": "Павлодар",
+        "desc": "",
+        "photo": "photos/c5p.jpg"
+      },
+      "children": [
+        {
+          "id": "fam5_c1",
+          "name": "Я",
+          "birth": "2010-10-10",
+          "city": "Павлодар",
+          "desc": "",
+          "photo": "",
+          "children": []
+        },
+        {
+          "id": "fam5_c2",
+          "name": "Даяна",
+          "birth": "2013-03-03",
+          "city": "Павлодар",
+          "desc": "",
+          "photo": "",
+          "children": []
+        }
+      ]
     }
   ]
 }

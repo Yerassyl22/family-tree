@@ -6,14 +6,9 @@ async function loadFamily() {
 
 function formatDate(dateStr) {
   if (!dateStr) return "";
-  const date = new Date(dateStr);
-  if (isNaN(date)) return dateStr;
-
-  return date.toLocaleDateString("ru-RU", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" });
 }
 
 function calcAge(dateStr) {
@@ -21,10 +16,10 @@ function calcAge(dateStr) {
   const dob = new Date(dateStr);
   if (isNaN(dob)) return null;
 
-  const today = new Date();
-  let age = today.getFullYear() - dob.getFullYear();
-  const m = today.getMonth() - dob.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+  const t = new Date();
+  let age = t.getFullYear() - dob.getFullYear();
+  const m = t.getMonth() - dob.getMonth();
+  if (m < 0 || (m === 0 && t.getDate() < dob.getDate())) age--;
   return age;
 }
 
@@ -37,81 +32,69 @@ function ageWord(age) {
   return "лет";
 }
 
-function buildBirthLine(person) {
-  if (!person.birth) return "";
-  const dateText = formatDate(person.birth);
-  const age = calcAge(person.birth);
-  if (age === null) return dateText;
-  return `${dateText} • ${age} ${ageWord(age)}`;
-}
-
-// --- Children source policy ---
-function getPairChildren(person) {
-  const partnerKids = person?.partner?.children;
-  if (Array.isArray(partnerKids) && partnerKids.length > 0) return partnerKids;
-
-  const ownKids = person?.children;
-  if (Array.isArray(ownKids)) return ownKids;
-
-  return [];
+function birthLine(p) {
+  if (!p.birth) return "";
+  const date = formatDate(p.birth);
+  const age = calcAge(p.birth);
+  if (age === null) return date;
+  return `${date} • ${age} ${ageWord(age)}`;
 }
 
 function closeAllInside(container) {
   container.querySelectorAll(".children.open").forEach((el) => el.classList.remove("open"));
 }
 
-function createCard(person, clickable) {
+function personHTML(p) {
+  return `
+    <div class="person">
+      <img class="photo" src="${p.photo || ""}" alt="">
+      <div class="card-meta">
+        <div class="name">${p.name || "Без имени"}</div>
+        <div class="birth">${birthLine(p)}</div>
+        <div class="city">${p.city || ""}</div>
+        <div class="info">${p.desc || ""}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* 1 карточка = семья (1 или 2 человека) */
+function createFamilyCard(person, clickable) {
   const card = document.createElement("div");
   card.className = "card";
   card.style.cursor = clickable ? "pointer" : "default";
 
-  const birthLine = buildBirthLine(person);
-  const cityLine = person.city || "";
-  const descLine = person.desc || "";
+  const hasPartner = !!person.partner;
+  if (!hasPartner) card.classList.add("single");
 
   card.innerHTML = `
-    <div class="card-top">
-      <img class="photo" src="${person.photo || ""}" alt="">
-      <div class="card-meta">
-        <div class="name">${person.name || "Без имени"}</div>
-        <div class="birth">${birthLine}</div>
-        <div class="city">${cityLine}</div>
-        <div class="info">${descLine}</div>
-      </div>
+    <div class="family ${hasPartner ? "two" : "one"}">
+      ${personHTML(person)}
+      ${hasPartner ? `<div class="divider"></div>${personHTML(person.partner)}` : ``}
     </div>
   `;
   return card;
 }
 
-function createPersonNode(person) {
+function createNode(person) {
   const wrap = document.createElement("div");
   wrap.className = "node";
 
-  const kids = getPairChildren(person);
-  const hasChildren = kids.length > 0;
-
-  const couple = document.createElement("div");
-  couple.className = "couple";
-  couple.style.justifyContent = "center";
-
-  const left = createCard(person, hasChildren);
-  couple.appendChild(left);
-
-  const right = person.partner ? createCard(person.partner, hasChildren) : null;
-  if (right) couple.appendChild(right);
+  const hasChildren = Array.isArray(person.children) && person.children.length > 0;
+  const card = createFamilyCard(person, hasChildren);
 
   const childrenWrap = document.createElement("div");
   childrenWrap.className = "children";
 
   if (hasChildren) {
-    kids.forEach((child) => {
+    person.children.forEach((child) => {
       const row = document.createElement("div");
       row.className = "child-row";
-      row.appendChild(createPersonNode(child));
+      row.appendChild(createNode(child));
       childrenWrap.appendChild(row);
     });
 
-    const toggle = () => {
+    card.addEventListener("click", () => {
       const isOpen = childrenWrap.classList.contains("open");
       if (isOpen) {
         childrenWrap.classList.remove("open");
@@ -120,64 +103,12 @@ function createPersonNode(person) {
         childrenWrap.classList.add("open");
       }
       redrawLinesSafe();
-    };
-
-    left.addEventListener("click", toggle);
-    if (right) right.addEventListener("click", toggle);
-  } else {
-    left.style.cursor = "default";
-    if (right) right.style.cursor = "default";
+    });
   }
 
-  wrap.appendChild(couple);
+  wrap.appendChild(card);
   wrap.appendChild(childrenWrap);
   return wrap;
-}
-
-function createCoupleRoot(root) {
-  const container = document.createElement("div");
-  container.className = "node";
-  const couple = document.createElement("div");
-  couple.className = "couple";
-
-  const rootKids = getPairChildren(root);
-  const hasChildren = rootKids.length > 0;
-
-  const left = createCard(root, hasChildren);
-  const right = root.partner ? createCard(root.partner, hasChildren) : null;
-
-  const childrenWrap = document.createElement("div");
-  childrenWrap.className = "children root-children";
-
-  if (hasChildren) {
-    rootKids.forEach((child) => {
-      const row = document.createElement("div");
-      row.className = "child-row";
-      row.appendChild(createPersonNode(child));
-      childrenWrap.appendChild(row);
-    });
-
-    const toggleRoot = () => {
-      const isOpen = childrenWrap.classList.contains("open");
-      if (isOpen) {
-        childrenWrap.classList.remove("open");
-        closeAllInside(childrenWrap);
-      } else {
-        childrenWrap.classList.add("open");
-      }
-      redrawLinesSafe();
-    };
-
-    left.addEventListener("click", toggleRoot);
-    if (right) right.addEventListener("click", toggleRoot);
-  }
-
-  couple.appendChild(left);
-  if (right) couple.appendChild(right);
-
-  container.appendChild(couple);
-  container.appendChild(childrenWrap);
-  return container;
 }
 
 /* ===== Buttons ===== */
@@ -189,123 +120,133 @@ function expandAll() {
 function collapseAll() {
   document.querySelectorAll(".children").forEach((el) => el.classList.remove("open"));
   redrawLinesSafe();
+  requestAnimationFrame(() => window.__centerRoot && window.__centerRoot());
 }
 
-/* ===== SVG lines (partners + parent->children) ===== */
-function svgLine(svg, x1, y1, x2, y2) {
-  const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  l.setAttribute("x1", x1);
-  l.setAttribute("y1", y1);
-  l.setAttribute("x2", x2);
-  l.setAttribute("y2", y2);
-  l.setAttribute("stroke", "#cfcfcf");
-  l.setAttribute("stroke-width", "2");
-  l.setAttribute("stroke-linecap", "round");
-  svg.appendChild(l);
-}
-
-function rectInViewport(el) {
-  const viewport = document.getElementById("viewport");
-  const r = el.getBoundingClientRect();
-  const vr = viewport.getBoundingClientRect();
-  return {
-    left: r.left - vr.left,
-    top: r.top - vr.top,
-    right: r.right - vr.left,
-    bottom: r.bottom - vr.top,
-    cx: (r.left + r.right) / 2 - vr.left,
-    cy: (r.top + r.bottom) / 2 - vr.top,
-  };
-}
-
+/* ===== Lines (board coords) ===== */
 function redrawLines() {
   const svg = document.getElementById("lines");
-  if (!svg) return;
+  const board = document.getElementById("board");
+  if (!svg || !board) return;
+
   svg.innerHTML = "";
+  const svgNS = "http://www.w3.org/2000/svg";
+  // растянуть svg под размеры дерева (чтобы ничего не обрезалось)
+const tree = document.getElementById("tree");
+const w = Math.max(tree.scrollWidth, 5000);
+const h = Math.max(tree.scrollHeight, 5000);
+svg.setAttribute("width", w);
+svg.setAttribute("height", h);
+svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
 
-  // Couples inside closed `.children` are still in the DOM (just clipped by max-height).
-  // Their bounding boxes can produce "floating" short dashes on first load.
-  // We draw lines only for elements that are actually visible inside the viewport.
-  const viewport = document.getElementById("viewport");
-  const vr = viewport?.getBoundingClientRect();
-  const isVisible = (el) => {
-    if (!el || !vr) return false;
 
-    // If element is inside a closed children container, it's not visible.
-    const parentChildren = el.closest(".children");
-    if (parentChildren && !parentChildren.classList.contains("open")) return false;
+  function line(x1, y1, x2, y2) {
+    const l = document.createElementNS(svgNS, "line");
+    l.setAttribute("x1", x1);
+    l.setAttribute("y1", y1);
+    l.setAttribute("x2", x2);
+    l.setAttribute("y2", y2);
+    l.setAttribute("stroke", "#cfcfcf");
+    l.setAttribute("stroke-width", "2");
+    l.setAttribute("stroke-linecap", "round");
+    svg.appendChild(l);
+  }
 
-    const r = el.getBoundingClientRect();
-    if (r.width <= 1 || r.height <= 1) return false;
+  function elbow(x1, y1, x2, y2, r = 10) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const sx = dx >= 0 ? 1 : -1;
+    const sy = dy >= 0 ? 1 : -1;
 
-    // Must intersect viewport.
-    if (r.bottom < vr.top || r.top > vr.bottom || r.right < vr.left || r.left > vr.right) return false;
-    return true;
-  };
+    const rr = Math.min(r, Math.abs(dx), Math.abs(dy));
+    const hx = x2 - sx * rr;
+    const hy = y1 + sy * rr;
 
-  // 1) линия между партнёрами (для каждой пары)
-  document.querySelectorAll(".couple").forEach((couple) => {
-    if (!isVisible(couple)) return;
-    const cards = couple.querySelectorAll(":scope > .card");
-    if (cards.length >= 2) {
-      const a = rectInViewport(cards[0]);
-      const b = rectInViewport(cards[1]);
-      svgLine(svg, a.right, a.cy, b.left, b.cy);
-    }
-  });
+    const d = [
+      `M ${x1} ${y1}`,
+      `L ${hx} ${y1}`,
+      `Q ${x2} ${y1} ${x2} ${hy}`,
+      `L ${x2} ${y2}`
+    ].join(" ");
 
-  // 2) линии "пара -> ряд детей" (только если дети открыты)
+    const p = document.createElementNS(svgNS, "path");
+    p.setAttribute("d", d);
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", "#cfcfcf");
+    p.setAttribute("stroke-width", "2");
+    p.setAttribute("stroke-linecap", "round");
+    p.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(p);
+  }
+
+function posRelativeToBoard(el, board) {
+  let x = 0, y = 0;
+  let cur = el;
+  while (cur && cur !== board) {
+    x += cur.offsetLeft || 0;
+    y += cur.offsetTop || 0;
+    cur = cur.offsetParent;
+  }
+  return { x, y };
+}
+
+function anchorBottom(card) {
+  const p = posRelativeToBoard(card, board);
+  return { x: p.x + card.offsetWidth / 2, y: p.y + card.offsetHeight };
+}
+
+function anchorTop(card) {
+  const p = posRelativeToBoard(card, board);
+  return { x: p.x + card.offsetWidth / 2, y: p.y };
+}
+
+
+
+  // линии: рисуем только для открытых children
   document.querySelectorAll(".node").forEach((node) => {
-    const couple = node.querySelector(":scope > .couple");
+    const parentCard = node.querySelector(":scope > .card");
     const childrenWrap = node.querySelector(":scope > .children");
-    if (!couple || !childrenWrap) return;
+    if (!parentCard || !childrenWrap) return;
     if (!childrenWrap.classList.contains("open")) return;
 
-    if (!isVisible(couple)) return;
+    const childCards = childrenWrap.querySelectorAll(":scope > .child-row > .node > .card");
+    if (!childCards.length) return;
 
-    const parentCards = couple.querySelectorAll(":scope > .card");
-    if (!parentCards.length) return;
+    const p = anchorBottom(parentCard);
+    const children = Array.from(childCards).map(anchorTop);
 
-    const parentRects = Array.from(parentCards).map(rectInViewport);
-    const parentX = parentRects.reduce((s, r) => s + r.cx, 0) / parentRects.length;
-    const parentBottom = Math.max(...parentRects.map((r) => r.bottom));
+    const junctionY = p.y + 26;
+    const gapTop = 14;   // не доходить до карточки
+    const radius = 10;   // скругление угла
 
-    const childCouples = childrenWrap.querySelectorAll(":scope > .child-row > .node > .couple");
-    if (!childCouples.length) return;
+    line(p.x, p.y, p.x, junctionY);
 
-    const visibleChildCouples = Array.from(childCouples).filter(isVisible);
-    if (!visibleChildCouples.length) return;
-
-    const childAnchors = visibleChildCouples.map((cc) => {
-      const cards = cc.querySelectorAll(":scope > .card");
-      const rects = Array.from(cards).map(rectInViewport);
-      return {
-        x: rects.reduce((s, r) => s + r.cx, 0) / rects.length,
-        top: Math.min(...rects.map((r) => r.top)),
-      };
-    });
-
-    const yMid = parentBottom + 24;
-
-    svgLine(svg, parentX, parentBottom, parentX, yMid);
-
-    const minX = Math.min(...childAnchors.map((k) => k.x));
-    const maxX = Math.max(...childAnchors.map((k) => k.x));
-    svgLine(svg, minX, yMid, maxX, yMid);
-
-    childAnchors.forEach((k) => {
-      svgLine(svg, k.x, yMid, k.x, k.top);
+    children.forEach((c) => {
+      const targetY = c.y - gapTop;
+      elbow(p.x, junctionY, c.x, targetY, radius);
     });
   });
 }
 
-/* ===== Pan/Zoom ===== */
+function redrawLinesSafe() {
+  requestAnimationFrame(() => {
+    redrawLines();
+    requestAnimationFrame(() => {
+      redrawLines();
+      setTimeout(redrawLines, 120);
+      setTimeout(redrawLines, 280);
+    });
+  });
+}
+
+
+/* ===== Pan/Zoom + center root ===== */
 function setupPanZoom() {
   const viewport = document.getElementById("viewport");
   const board = document.getElementById("board");
   if (!viewport || !board) return;
 
-  let x = 60, y = 40, scale = 1;
+  let x = 60, y = 80, scale = 1;
 
   let dragging = false;
   let startX = 0, startY = 0;
@@ -315,8 +256,22 @@ function setupPanZoom() {
     redrawLinesSafe();
   }
 
-  apply();
+  function centerRoot() {
+    const rootCard = document.querySelector("#tree > .node > .card");
+    if (!rootCard) return;
 
+    const vw = viewport.clientWidth;
+    const cx = rootCard.offsetLeft + rootCard.offsetWidth / 2;
+
+    x = vw / 2 - cx * scale; // центр по X
+    y = 90;                  // отступ сверху
+    apply();
+  }
+
+  apply();
+  requestAnimationFrame(centerRoot);
+
+  // mouse drag
   viewport.addEventListener("mousedown", (e) => {
     dragging = true;
     startX = e.clientX - x;
@@ -332,67 +287,52 @@ function setupPanZoom() {
 
   window.addEventListener("mouseup", () => (dragging = false));
 
-  viewport.addEventListener(
-    "wheel",
-    (e) => {
-      e.preventDefault();
-      const zoom = e.deltaY < 0 ? 1.08 : 0.92;
-      scale = Math.min(2.5, Math.max(0.5, scale * zoom));
-      apply();
-    },
-    { passive: false }
-  );
+  // wheel zoom
+  viewport.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const zoom = e.deltaY < 0 ? 1.08 : 0.92;
+    scale = Math.min(2.5, Math.max(0.5, scale * zoom));
+    apply();
+  }, { passive: false });
 
+  // touch pinch/drag
   let lastDist = null;
   let lastMid = null;
 
   const dist = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
   const mid = (a, b) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 });
 
-  viewport.addEventListener(
-    "touchstart",
-    (e) => {
-      if (e.touches.length === 1) {
-        dragging = true;
-        startX = e.touches[0].clientX - x;
-        startY = e.touches[0].clientY - y;
-      } else if (e.touches.length === 2) {
-        dragging = false;
-        lastDist = dist(e.touches[0], e.touches[1]);
-        lastMid = mid(e.touches[0], e.touches[1]);
-      }
-    },
-    { passive: false }
-  );
+  viewport.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 1) {
+      dragging = true;
+      startX = e.touches[0].clientX - x;
+      startY = e.touches[0].clientY - y;
+    } else if (e.touches.length === 2) {
+      dragging = false;
+      lastDist = dist(e.touches[0], e.touches[1]);
+      lastMid = mid(e.touches[0], e.touches[1]);
+    }
+  }, { passive: false });
 
-  viewport.addEventListener(
-    "touchmove",
-    (e) => {
-      e.preventDefault();
+  viewport.addEventListener("touchmove", (e) => {
+    e.preventDefault();
 
-      if (e.touches.length === 1 && dragging) {
-        x = e.touches[0].clientX - startX;
-        y = e.touches[0].clientY - startY;
-        apply();
-      } else if (e.touches.length === 2) {
-        const d = dist(e.touches[0], e.touches[1]);
-        const m = mid(e.touches[0], e.touches[1]);
+    if (e.touches.length === 1 && dragging) {
+      x = e.touches[0].clientX - startX;
+      y = e.touches[0].clientY - startY;
+      apply();
+    } else if (e.touches.length === 2) {
+      const d = dist(e.touches[0], e.touches[1]);
+      const m = mid(e.touches[0], e.touches[1]);
 
-        if (lastDist) {
-          scale = Math.min(2.5, Math.max(0.5, scale * (d / lastDist)));
-        }
-        if (lastMid) {
-          x += m.x - lastMid.x;
-          y += m.y - lastMid.y;
-        }
+      if (lastDist) scale = Math.min(2.5, Math.max(0.5, scale * (d / lastDist)));
+      if (lastMid) { x += (m.x - lastMid.x); y += (m.y - lastMid.y); }
 
-        lastDist = d;
-        lastMid = m;
-        apply();
-      }
-    },
-    { passive: false }
-  );
+      lastDist = d;
+      lastMid = m;
+      apply();
+    }
+  }, { passive: false });
 
   viewport.addEventListener("touchend", () => {
     dragging = false;
@@ -400,17 +340,9 @@ function setupPanZoom() {
     lastMid = null;
   });
 
-  window.addEventListener("resize", () => apply());
-}
+  window.addEventListener("resize", () => centerRoot());
 
-function redrawLinesSafe() {
-  requestAnimationFrame(() => {
-    redrawLines();
-    requestAnimationFrame(() => {
-      redrawLines();
-      setTimeout(redrawLines, 260);
-    });
-  });
+  window.__centerRoot = centerRoot;
 }
 
 /* ===== Init ===== */
@@ -419,7 +351,7 @@ function redrawLinesSafe() {
     const data = await loadFamily();
     const tree = document.getElementById("tree");
     tree.innerHTML = "";
-    tree.appendChild(createCoupleRoot(data));
+    tree.appendChild(createNode(data));
 
     document.getElementById("expandAll")?.addEventListener("click", expandAll);
     document.getElementById("collapseAll")?.addEventListener("click", collapseAll);

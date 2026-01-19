@@ -77,43 +77,46 @@ h1 {
 
 /* ===== Family card ===== */
 .card {
+  margin-top: 0;
   background: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 16px;
   padding: 12px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   cursor: pointer;
-  width: 560px;
+  width: 345px;
 }
 
 .card.single {
-  width: 270px;
+  width: 175px;
 }
 
 .card:active { transform: scale(0.99); }
-
 .family {
-  display: flex;
-  gap: 18px;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: start;
 }
 
-.family.two .person { width: 50%; }
+.family.two {
+  grid-template-columns: 1fr 1fr; /* две персоны рядом */
+}
 
 .person {
   display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  min-width: 0;
+  flex-direction: column;  /* ВАЖНО: фото сверху, текст снизу */
+  align-items: center;
+  gap: 8px;
+  text-align: center;
 }
 
 .photo {
-  width: 72px;
-  height: 96px;
-  border-radius: 10px;
+  width: 86px;     /* можно 72-110 как нравится */
+  height: 110px;
+  border-radius: 12px;
   object-fit: cover;
   background: #eee;
-  flex: 0 0 auto;
 }
 
 .card-meta {
@@ -123,22 +126,30 @@ h1 {
   min-width: 0;
 }
 
-.name { font-weight: 800; font-size: 16px; line-height: 1.2; }
-.birth { font-size: 13px; opacity: 0.75; }
-.city  { font-size: 13px; opacity: 0.8; }
-.info  { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+.name { font-weight: 800; font-size: 15px; line-height: 1.2; }
+.birth { font-size: 12px; opacity: 0.75; }
+.city  { font-size: 12px; opacity: 0.8; }
+.info  { font-size: 11px; opacity: 0.75; margin-top: 2px; }
 
-.family.two .divider {
-  width: 1px;
-  background: #eee;
-  border-radius: 1px;
-}
+/* divider больше не нужен (можешь оставить, но он не будет мешать) */
+.family.two .divider { display: none; }
+
+
+
+
+
+
+
+
+
 
 /* ===== Nodes & children row ===== */
 .node{
   display: flex;
   flex-direction: column;
   align-items: center; /* дети будут центрироваться под родителем */
+    position: relative;
+  padding-top: 20px; /* место для линии */
 }
 
 .children{

@@ -58,6 +58,7 @@ function personHTML(p) {
   `;
 }
 
+
 /* 1 карточка = семья (1 или 2 человека) */
 function createFamilyCard(person, clickable) {
   const card = document.createElement("div");
@@ -216,7 +217,7 @@ function anchorTop(card) {
     const children = Array.from(childCards).map(anchorTop);
 
     const junctionY = p.y + 26;
-    const gapTop = 14;   // не доходить до карточки
+    const gapTop = 0.5;   // не доходить до карточки
     const radius = 10;   // скругление угла
 
     line(p.x, p.y, p.x, junctionY);

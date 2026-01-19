@@ -1,15 +1,15 @@
 {
   "id": "root",
   "name": "Балауса Апа",
-  "birth": "1952-03-12",
-  "city": "Алматы",
+  "birth": "0000-00-00",
+  "city": "",
   "desc": "",
   "photo": "photos/babushka.jpg",
   "partner": {
     "id": "root_p",
     "name": "Мухтар Ата",
-    "birth": "1948-11-05",
-    "city": "Алматы",
+    "birth": "0000-00-00",
+    "city": "",
     "desc": "",
     "photo": "photos/dedushka.jpg"
   },
@@ -17,9 +17,9 @@
     {
       "id": "fam1",
       "name": "Салтанат Апай",
-      "birth": "1972-08-27",
+      "birth": "0000-00-00",
       "city": "Оскемен",
-      "desc": "Папа",
+      "desc": "",
       "photo": "",
       "tag": "blood",
 
@@ -27,17 +27,17 @@
       "partner": {
         "id": "fam1_p",
         "name": "Кайыржан Ата",
-        "birth": "1979-01-19",
+        "birth": "0000-00-00",
         "city": "Оскемен",
-        "desc": "Мама",
+        "desc": "",
         "photo": ""
       },
       "children": [
         {
           "id": "fam1_c1",
           "name": "Назкен",
-          "birth": "2004-03-01",
-          "city": "Астана",
+          "birth": "0000-12-17",
+          "city": "Шымкент",
           "desc": "",
           "photo": "",
           "children": []
@@ -45,7 +45,7 @@
         {
           "id": "fam1_c2",
           "name": "Еркин",
-          "birth": "2015-01-11",
+          "birth": "0000-08-27",
           "city": "Оскемен",
           "desc": "",
           "photo": "",
@@ -54,7 +54,7 @@
             {
                 "id": "fam1_c2",
                 "name": "Айым",
-                 "birth": "2015-01-11",
+                 "birth": "0000-06-04",
                  "city": "Оскемен",
                  "desc": "",
                  "photo": ""
@@ -62,7 +62,7 @@
             {
                           "id": "fam1_c2",
           "name": "Арман",
-          "birth": "2015-01-11",
+          "birth": "0000-12-08",
           "city": "Оскемен",
           "desc": "",
           "photo": ""
@@ -75,8 +75,8 @@
     {
       "id": "fam2",
       "name": "Бальзок Нане",
-      "birth": "1974-05-10",
-      "city": "Алматы",
+      "birth": "0000-04-13",
+      "city": "Oskemen",
       "desc": "",
       "photo": "photos/c2.jpg",
       "tag": "blood",
@@ -85,8 +85,8 @@
       "partner": {
         "id": "fam2_p",
         "name": "Женя Ата",
-        "birth": "1976-12-15",
-        "city": "Алматы",
+        "birth": "0000-00-00",
+        "city": "Oskemen",
         "desc": "",
         "photo": "photos/c2p.jpg"
       },
@@ -94,15 +94,15 @@
         {
           "id": "fam2_c1",
           "name": "Акжаркын Ага",
-          "birth": "2000-04-04",
-          "city": "Алматы",
+          "birth": "1993-04-09",
+          "city": "Oskemen",
           "desc": "",
           "photo": "",
           "partner": {
             "id": "fam2_c1_p",
             "name": "Тогжан женге",
-            "birth": "2000-07-07",
-            "city": "Алматы",
+            "birth": "0000-08-31",
+            "city": "Oskemen",
             "desc": "",
             "photo": ""
           },
@@ -110,8 +110,8 @@
             {
                  "id": "fam2_c1",
                  "name": "Тайыр",
-                 "birth": "2000-04-04",
-                 "city": "Алматы",
+                 "birth": "0000-00-00",
+                 "city": "Oskemen",
                  "desc": "",
                  "photo": ""
             }
@@ -120,8 +120,8 @@
         {
           "id": "fam2_c2",
           "name": "Улан ага",
-          "birth": "2003-09-09",
-          "city": "Алматы",
+          "birth": "1994-10-03",
+          "city": "Oskemen",
           "desc": "",
           "photo": "",
           "children": []
@@ -132,26 +132,26 @@
     {
       "id": "fam3",
       "name": "Айдар Ага",
-      "birth": "1977-02-20",
-      "city": "Шымкент",
+      "birth": "0000-04-14",
+      "city": "Oskemen",
       "desc": "",
-      "photo": "photos/c3.jpg",
+      "photo": "",
       "tag": "blood",
 
       "partner": {
         "id": "fam3_p",
         "name": "Тетя Света",
-        "birth": "1978-03-03",
-        "city": "Шымкент",
+        "birth": "1973-12-29",
+        "city": "Oskemen",
         "desc": "",
-        "photo": "photos/c3p.jpg"
+        "photo": ""
       },
       "children": [
         {
           "id": "fam3_c1",
           "name": "Дакось",
-          "birth": "2002-01-01",
-          "city": "Шымкент",
+          "birth": "2008-09-26",
+          "city": "Oviedo",
           "desc": "",
           "photo": "",
           "children": []
@@ -159,8 +159,8 @@
         {
           "id": "fam3_c2",
           "name": "Диана",
-          "birth": "2006-06-06",
-          "city": "Шымкент",
+          "birth": "2016-07-07",
+          "city": "Oskemen",
           "desc": "",
           "photo": "",
           "children": []
@@ -171,26 +171,26 @@
     {
       "id": "fam4",
       "name": "Саулет Нане",
-      "birth": "1980-11-11",
-      "city": "Караганда",
+      "birth": "0000-04-18",
+      "city": "Oskemen",
       "desc": "",
-      "photo": "photos/c4.jpg",
+      "photo": "",
       "tag": "blood",
 
       "partner": {
         "id": "fam4_p",
         "name": "ТуранБей",
-        "birth": "1981-12-12",
-        "city": "Караганда",
+        "birth": "0000-00-00",
+        "city": "Oskemen",
         "desc": "",
-        "photo": "photos/c4p.jpg"
+        "photo": ""
       },
       "children": [
         {
           "id": "fam4_c1",
           "name": "Азат Ага",
-          "birth": "2005-05-05",
-          "city": "Караганда",
+          "birth": "1992-12-16",
+          "city": "Oskemen",
           "desc": "",
           "photo": "",
             "tag": "blood",
@@ -198,8 +198,8 @@
           "partner": {
             "id": "fam4_c1_p",
             "name": "Алия женге",
-            "birth": "2005-08-08",
-            "city": "Караганда",
+            "birth": "0000-11-28",
+            "city": "Oskemen",
             "desc": "",
             "photo": ""
           },
@@ -207,8 +207,8 @@
             {
                 "id": "fam4_c1",
           "name": "Амира",
-          "birth": "2005-05-05",
-          "city": "Караганда",
+          "birth": "0000-00-00",
+          "city": "Oskemen",
           "desc": "",
           "photo": ""
             }
@@ -220,24 +220,24 @@
     {
       "id": "fam5",
       "name": "Папа",
-      "birth": "1983-04-04",
-      "city": "Павлодар",
+      "birth": "1977-03-25",
+      "city": "Oskemen",
       "desc": "",
-      "photo": "photos/c5.jpg",
+      "photo": "",
       "partner": {
         "id": "fam5_p",
         "name": "Мама",
-        "birth": "1984-07-07",
-        "city": "Павлодар",
+        "birth": "1978-07-05",
+        "city": "Oskemen",
         "desc": "",
-        "photo": "photos/c5p.jpg"
+        "photo": ""
       },
       "children": [
         {
           "id": "fam5_c1",
           "name": "Я",
-          "birth": "2010-10-10",
-          "city": "Павлодар",
+          "birth": "2003-05-22",
+          "city": "Astana",
           "desc": "",
           "photo": "",
           "children": []
@@ -245,8 +245,8 @@
         {
           "id": "fam5_c2",
           "name": "Даяна",
-          "birth": "2013-03-03",
-          "city": "Павлодар",
+          "birth": "2009-08-03",
+          "city": "Oskemen",
           "desc": "",
           "photo": "",
           "children": []

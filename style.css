@@ -8,8 +8,7 @@ body{
   display: flex;
   flex-direction: column;
   font-family: Arial, sans-serif;
-  background:#99CCCC
-  color: #111;
+  background:#99CCCC,
 }
 
 .header{
@@ -125,7 +124,7 @@ body{
 .photo {
   width: 130px;
   height: 160px;
-  border-radius: 12px;
+  border-radius: 2px;
   object-fit: cover;
   background: #eee;
 }
@@ -158,7 +157,7 @@ body{
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 20px; /* место под линии */
+  padding-top: 35px; /* место под линии */
 }
 
 .children{
@@ -199,10 +198,19 @@ body{
 
 /* ОБЩЕЕ для всех цветных блоков */
 .person[class*="tag-"]{
-  border-radius: 12px;
-  padding: 8px;
+  border-radius: 30px;
+  padding: 1px;
 }
 
 /* КРОВНЫЙ родственник — холодный голубой */
 .person.tag-blood{
   background: #E6E6FA
+}
+
+
+.lines path,
+.lines line{
+  stroke: #000 !important;
+  stroke-width: 2;
+  fill: none;
+}

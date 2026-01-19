@@ -168,7 +168,7 @@ svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
     l.setAttribute("y1", y1);
     l.setAttribute("x2", x2);
     l.setAttribute("y2", y2);
-    l.setAttribute("stroke", "#cfcfcf");
+    l.setAttribute("stroke", "#000000ff");
     l.setAttribute("stroke-width", "2");
     l.setAttribute("stroke-linecap", "round");
     svg.appendChild(l);
@@ -194,7 +194,7 @@ svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
     const p = document.createElementNS(svgNS, "path");
     p.setAttribute("d", d);
     p.setAttribute("fill", "none");
-    p.setAttribute("stroke", "#cfcfcf");
+    p.setAttribute("stroke", "#000000ff");
     p.setAttribute("stroke-width", "2");
     p.setAttribute("stroke-linecap", "round");
     p.setAttribute("stroke-linejoin", "round");
@@ -238,7 +238,7 @@ function anchorTop(card) {
     const children = Array.from(childCards).map(anchorTop);
 
     const junctionY = p.y + 26;
-    const gapTop = 0.5;   // не доходить до карточки
+    const gapTop = 0;   // не доходить до карточки
     const radius = 10;   // скругление угла
 
     line(p.x, p.y, p.x, junctionY);

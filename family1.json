@@ -16,12 +16,12 @@
   },
 
   "children": [
-{ "id": "fam1", "name": "Оразбай", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+{ "id": "fam1", "name": "Оразбай", "birth": "", "city": "", "desc": "", "photo": "photos/Оразбай.jpeg", "tag": "blood",
   "partner": { 
-  "id": "fam1_p", "name": "Батила", "birth": "", "city": "", "desc": "", "photo": "" },
+  "id": "fam1_p", "name": "Батила", "birth": "", "city": "", "desc": "", "photo": "photos/батила.jpeg" },
 
   "children": [
-    { "id": "fam1_c1", "name": "Ермек ага", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+    { "id": "fam1_c1", "name": "Ермек ага", "birth": "", "city": "", "desc": "", "photo": "photos/Ермек.jpeg", "tag": "blood",
       "partner": { 
       "id": "fam1_c1_p", "name": "Сауле апай", "birth": "", "city": "", "desc": "", "photo": "" },
       "children": [
@@ -67,11 +67,11 @@
       "birth": "",
       "city": "Оскемен",
       "desc": "",
-      "photo": "",
+      "photo": "photos/ерсин.jpeg",
       "tag": "blood",
       "partner": { "id": "fam2_c1_p", "name": "Арай", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
       "children": [
-        { "id": "fam2_c1_c1", "name": "Аяла", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+        { "id": "fam2_c1_c1", "name": "Аяла", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/аяла.jpeg" },
         { "id": "fam2_c1_c2", "name": "Асылым", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
       ]
     },
@@ -81,12 +81,12 @@
       "birth": "",
       "city": "Оскемен",
       "desc": "",
-      "photo": "",
+      "photo": "photos/ерназ.jpeg",
       "tag": "blood",
-      "partner": { "id": "fam2_c2_p", "name": "Аружан", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "partner": { "id": "fam2_c2_p", "name": "Аружан", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/аружан.jpeg" },
       "children": [
         { "id": "fam2_c2_c1", "name": "Ансар", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
-        { "id": "fam2_c2_c2", "name": "Хамза", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
+        { "id": "fam2_c2_c2", "name": "Хамза", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/хамза.jpeg" }
       ]
     },
     { "id": "fam2_c3", "name": "Меруерт", "birth": "", "city": "Оскемен", "desc": "", "photo": "", "tag": "blood" },
@@ -96,9 +96,9 @@
       "birth": "",
       "city": "Оскемен",
       "desc": "",
-      "photo": "",
+      "photo": "photos/ернар.jpeg",
       "tag": "blood",
-      "partner": { "id": "fam2_c4_p", "name": "Акерке", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "partner": { "id": "fam2_c4_p", "name": "Акерке", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/акерке.jpeg" },
       "children": [
         { "id": "fam2_c4_c1", "name": "Тимур", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
         { "id": "fam2_c4_c2", "name": "Еркем", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
@@ -142,9 +142,9 @@
         "birth": "", "city": "", "desc": "", "photo": ""
       },
       "children": [
-        { "id": "fam3_c1_c1", "name": "Зере",    "birth": "", "city": "", "desc": "", "photo": "" },
-        { "id": "fam3_c1_c2", "name": "Томирис", "birth": "", "city": "", "desc": "", "photo": "" },
-        { "id": "fam3_c1_c3", "name": "Альтаир", "birth": "", "city": "", "desc": "", "photo": "" }
+        { "id": "fam3_c1_c1", "name": "Зере",    "birth": "", "city": "", "desc": "", "photo": "photos/зере.jpeg" },
+        { "id": "fam3_c1_c2", "name": "Томирис", "birth": "", "city": "", "desc": "", "photo": "photos/томирис.jpeg" },
+        { "id": "fam3_c1_c3", "name": "Альтаир", "birth": "", "city": "", "desc": "", "photo": "photos/Альтаир.jpeg" }
       ]
     },
     {
@@ -153,7 +153,7 @@
       "birth": "",
       "city": "",
       "desc": "",
-      "photo": "",
+      "photo": "photos/Альбина.jpeg",
       "tag": "blood",
       "partner": {
         "id": "fam3_c2_p",
@@ -161,13 +161,13 @@
         "birth": "",
         "city": "",
         "desc": "",
-        "photo": ""
+        "photo": "photos/махмут.jpeg"
       },
       "children": [
-        { "id": "fam3_c2_c1", "name": "Мансур", "birth": "", "city": "", "desc": "", "photo": "" },
-        { "id": "fam3_c2_c2", "name": "Амир",   "birth": "", "city": "", "desc": "", "photo": "" },
-        { "id": "fam3_c2_c3", "name": "Елнур",  "birth": "", "city": "", "desc": "", "photo": "" },
-        { "id": "fam3_c2_c4", "name": "Айсана", "birth": "", "city": "", "desc": "", "photo": "" }
+        { "id": "fam3_c2_c1", "name": "Мансур", "birth": "", "city": "", "desc": "", "photo": "photos/мансур.jpeg" },
+        { "id": "fam3_c2_c2", "name": "Амир",   "birth": "", "city": "", "desc": "", "photo": "photos/амир.jpeg" },
+        { "id": "fam3_c2_c3", "name": "Елнур",  "birth": "", "city": "", "desc": "", "photo": "photos/елнур.jpeg" },
+        { "id": "fam3_c2_c4", "name": "Айсана", "birth": "", "city": "", "desc": "", "photo": "photos/айсана.jpeg" }
       ]
     },
     {
@@ -176,7 +176,7 @@
       "birth": "",
       "city": "",
       "desc": "",
-      "photo": ""
+      "photo": "photos/Анель2.JPG"
     }
   ]
 },
@@ -226,21 +226,21 @@
 
 { "id": "fam5", "name": "Амльмира", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
   "children": [
-    { "id": "fam5_c1", "name": "Жалгас", "birth": "", "city": "", "desc": "", "photo": "" }
+    { "id": "fam5_c1", "name": "Жалгас", "birth": "", "city": "", "desc": "", "photo": "photos/жалгас.jpeg" }
   ]
 },
 
 
 
-{ "id": "fam6", "name": "Касым Ага", "birth": "1972-08-27", "photo": "", "tag": "blood",
+{ "id": "fam6", "name": "Касым Ага", "birth": "1972-08-27", "photo": "photos/касымага.jpg", "tag": "blood",
   "partner": { 
-  "id": "fam6_p", "name": "Шинар Апай", "birth": "1979-01-19", "photo": "" },
+  "id": "fam6_p", "name": "Шинар Апай", "birth": "1979-01-19", "photo": "photos/ШинарАпай.jpg" },
   "children": [
     { "id": "fam6_c1", "name": "Елдос", "birth": "2001-10-14", "photo": "", "tag": "blood",
-      "partner": { "id": "fam6_c1_p", "name": "Аружан", "birth": "", "photo": "" }},
+      "partner": { "id": "fam6_c1_p", "name": "Аружан", "birth": "", "photo": "photos/Аружан2.JPG" }},
 
-    { "id": "fam6_c2", "name": "Аида", "birth": "2004-03-01", "photo": "" },
-    { "id": "fam6_c3", "name": "Аяна", "birth": "2015-01-11", "photo": "" }
+    { "id": "fam6_c2", "name": "Askim", "birth": "2004-03-01", "photo": "photos/жаным.jpg" },
+    { "id": "fam6_c3", "name": "Аяна", "birth": "2015-01-11", "photo": "photos/Аяна.JPG" }
   ]
 },
 

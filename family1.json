@@ -105,7 +105,7 @@
         { "id": "fam2_c4_c3", "name": "Коркем", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
       ]
     },
-    { "id": "fam2_c5", "name": "Айдос", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/айдос.jpg", "tag": "blood" }
+    { "id": "fam2_c5", "name": "Айдос", "birth": "", "city": "", "desc": "", "photo": "photos/айдос.jpg" }
   ]
 },
 

@@ -39,7 +39,7 @@
           "birth": "0000-12-17",
           "city": "Шымкент",
           "desc": "",
-          "photo": ""
+          "photo": "papa/nazken.jpg"
         },
         {
           "id": "fam1_c2",
@@ -47,7 +47,7 @@
           "birth": "0000-08-27",
           "city": "Оскемен",
           "desc": "",
-          "photo": "",
+          "photo": "papa/erkin.jpg",
 
           "children": [
             {
@@ -56,7 +56,7 @@
                  "birth": "0000-06-04",
                  "city": "Оскемен",
                  "desc": "",
-                 "photo": ""
+                 "photo": "papa/aiym.jpg"
             },
             {
           "id": "fam1_c2",
@@ -64,7 +64,7 @@
           "birth": "0000-12-08",
           "city": "Оскемен",
           "desc": "",
-          "photo": ""
+          "photo": "papa/arman.jpg"
             }
           ]
         }
@@ -93,7 +93,7 @@
         "birth": "0000-00-00",
         "city": "Oskemen",
         "desc": "",
-        "photo": ""
+        "photo": "papa/zhenya.JPG"
       },
       "children": [
         {
@@ -102,7 +102,7 @@
           "birth": "1993-04-09",
           "city": "Oskemen",
           "desc": "",
-          "photo": "",
+          "photo": "papa/azhok.jpg",
           "tag": "blood",
           "partner": {
             "id": "fam2_c1_p",
@@ -110,7 +110,7 @@
             "birth": "0000-08-31",
             "city": "Oskemen",
             "desc": "",
-            "photo": ""
+            "photo": "papa/togzhan.jpg"
           },
           "children": [
             {
@@ -150,7 +150,7 @@
         "birth": "1973-12-29",
         "city": "Oskemen",
         "desc": "",
-        "photo": ""
+        "photo": "papa/sveta.jpg"
       },
       "children": [
         {
@@ -178,7 +178,7 @@
       "birth": "0000-04-18",
       "city": "Oskemen",
       "desc": "",
-      "photo": "papa/saulet.JPG",
+      "photo": "papa/saulet.jpg",
       "tag": "blood",
 
       "partner": {
@@ -196,7 +196,7 @@
           "birth": "1992-12-16",
           "city": "Oskemen",
           "desc": "",
-          "photo": "",
+          "photo": "papa/azat.jpg",
             "tag": "blood",
 
           "partner": {
@@ -214,7 +214,7 @@
           "birth": "2023-10-24",
           "city": "Oskemen",
           "desc": "",
-          "photo": ""
+          "photo": "papa/amira.jpg"
             }
           ]
         }
@@ -235,7 +235,7 @@
           "id": "fam5_c2",
           "name": "Даяна",
           "birth": "2009-08-03",
-          "photo": ""
+          "photo": "papa/dayana.jpg"
         }
       ]
     }

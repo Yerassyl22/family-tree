@@ -39,8 +39,7 @@
           "birth": "0000-12-17",
           "city": "Шымкент",
           "desc": "",
-          "photo": "",
-          "children": []
+          "photo": ""
         },
         {
           "id": "fam1_c2",
@@ -60,7 +59,7 @@
                  "photo": ""
             },
             {
-                          "id": "fam1_c2",
+          "id": "fam1_c2",
           "name": "Арман",
           "birth": "0000-12-08",
           "city": "Оскемен",
@@ -80,11 +79,11 @@
 
     {
       "id": "fam2",
-      "name": "Бальзок Нане",
+      "name": "Балзок Нане",
       "birth": "0000-04-13",
       "city": "Oskemen",
       "desc": "",
-      "photo": "photos/c2.jpg",
+      "photo": "papa/balzok.jpg",
       "tag": "blood",
 
 
@@ -94,7 +93,7 @@
         "birth": "0000-00-00",
         "city": "Oskemen",
         "desc": "",
-        "photo": "photos/c2p.jpg"
+        "photo": ""
       },
       "children": [
         {
@@ -120,7 +119,7 @@
                  "birth": "2024-07-17",
                  "city": "Oskemen",
                  "desc": "",
-                 "photo": ""
+                 "photo": "papa/taiyr.JPG"
             }
           ]
         },
@@ -142,7 +141,7 @@
       "birth": "0000-04-14",
       "city": "Oskemen",
       "desc": "",
-      "photo": "",
+      "photo": "papa/aidar.jpg",
       "tag": "blood",
 
       "partner": {
@@ -160,8 +159,7 @@
           "birth": "2008-09-26",
           "city": "Oviedo",
           "desc": "",
-          "photo": "",
-          "children": []
+          "photo": "papa/dakos.jpg"
         },
         {
           "id": "fam3_c2",
@@ -169,8 +167,7 @@
           "birth": "2016-07-07",
           "city": "Oskemen",
           "desc": "",
-          "photo": "",
-          "children": []
+          "photo": "papa/diana.JPG"
         }
       ]
     },
@@ -181,7 +178,7 @@
       "birth": "0000-04-18",
       "city": "Oskemen",
       "desc": "",
-      "photo": "",
+      "photo": "papa/saulet.JPG",
       "tag": "blood",
 
       "partner": {
@@ -208,7 +205,7 @@
             "birth": "0000-11-28",
             "city": "Oskemen",
             "desc": "",
-            "photo": ""
+            "photo": "papa/aliya.jpg"
           },
           "children": [
             {
@@ -224,39 +221,21 @@
       ]
     },
 
-    {
-      "id": "fam5",
-      "name": "Папа",
-      "birth": "1977-03-25",
-      "city": "Oskemen",
-      "desc": "",
-      "photo": "",
-      "partner": {
-        "id": "fam5_p",
-        "name": "Мама",
-        "birth": "1978-07-05",
-        "city": "Oskemen",
-        "desc": "",
-        "photo": ""
-      },
+    { "id": "fam5", "name": "Папа", "birth": "1977-03-25", "photo": "papa/dad.jpg",
+      "partner": { 
+    "id": "fam5_p", "name": "Мама", "birth": "1978-07-05", "photo": "papa/mama.JPG" },
       "children": [
         {
           "id": "fam5_c1",
-          "name": "Я",
+          "name": "YERASSYL",
           "birth": "2003-05-22",
-          "city": "Astana",
-          "desc": "",
-          "photo": "",
-          "children": []
+          "photo": ""
         },
         {
           "id": "fam5_c2",
           "name": "Даяна",
           "birth": "2009-08-03",
-          "city": "Oskemen",
-          "desc": "",
-          "photo": "",
-          "children": []
+          "photo": ""
         }
       ]
     }

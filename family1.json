@@ -105,7 +105,7 @@
         { "id": "fam2_c4_c3", "name": "Коркем", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
       ]
     },
-    { "id": "fam2_c5", "name": "Айдос", "birth": "", "city": "Оскемен", "desc": "", "photo": "Photos/Айдос.jpeg", "tag": "blood" }
+    { "id": "fam2_c5", "name": "Айдос", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/Айдос.jpeg", "tag": "blood" }
   ]
 },
 
@@ -204,7 +204,7 @@
       "birth": "",
       "city": "",
       "desc": "",
-      "photo": "Photos/Асека.jpeg",
+      "photo": "photos/Асека.jpeg",
       "tag": "blood",
       "partner": {
         "id": "fam4_c1_p",
@@ -215,7 +215,7 @@
         "photo": "photos/Ажар.jpeg"
       },
       "children": [
-        { "id": "fam4_c1_c1", "name": "Исмаил", "birth": "", "city": "", "desc": "", "photo": "Photos/Isa.jpg" }
+        { "id": "fam4_c1_c1", "name": "Исмаил", "birth": "", "city": "", "desc": "", "photo": "photos/Isa.jpg" }
       ]
     },
     { "id": "fam4_c2", "name": "Гамир", "birth": "", "city": "", "desc": "", "photo": "" }

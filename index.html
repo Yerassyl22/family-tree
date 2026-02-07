@@ -8,12 +8,26 @@
 </head>
 <body>
 
-  <header class="header">
-    <div class="controls">
+<header class="header">
+
+  <div class="header-row">
+    <!-- ЛЕВАЯ ГРУППА: вкладки деревьев -->
+    <div class="tabs">
+      <button class="tab is-active" data-file="family1.json" type="button">Папа Сторона</button>
+      <button class="tab" data-file="family2.json" type="button">Мама Сторона</button>
+      <button class="tab" data-file="family3.json" type="button">папа сторона</button>
+      <button class="tab" data-file="family4.json" type="button">мама сторона</button>
+    </div>
+
+    <!-- ПРАВАЯ ГРУППА: управление -->
+    <div class="controls controls-spaced">
       <button id="expandAll" type="button">Развернуть всё</button>
       <button id="collapseAll" type="button">Свернуть всё</button>
     </div>
-  </header>
+  </div>
+
+</header>
+
 
   <!-- ДЕРЕВО НА ВЕСЬ ОСТАЛЬНОЙ ЭКРАН -->
   <main class="tree-layout">

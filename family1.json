@@ -1,0 +1,259 @@
+{
+  "id": "root",
+  "name": "Ауганбай Ата",
+  "birth": "",
+  "city": "",
+  "desc": "",
+  "photo": "photos/dedushka.jpg",
+
+  "partner": {
+    "id": "root_p",
+    "name": "Коксеген Апа",
+    "birth": "",
+    "city": "",
+    "desc": "",
+    "photo": "photos/babushka.jpg"
+  },
+
+  "children": [
+{ "id": "fam1", "name": "Оразбай", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+  "partner": { 
+  "id": "fam1_p", "name": "Батила", "birth": "", "city": "", "desc": "", "photo": "" },
+
+  "children": [
+    { "id": "fam1_c1", "name": "Ермек ага", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+      "partner": { 
+      "id": "fam1_c1_p", "name": "Сауле апай", "birth": "", "city": "", "desc": "", "photo": "" },
+      "children": [
+        { "id": "fam1_c1_c1", "name": "Мустафа", "birth": "", "city": "", "desc": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "fam1_c2",
+      "name": "Раушан апай",
+      "birth": "1975-08-27",
+      "city": "Оскемен",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+      "partner": { "id": "fam1_c2_p", "name": "Ербол Ага", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "children": [
+        { "id": "fam1_c2_c1", "name": "Молдир", "birth": "2005-06-04", "city": "Оскемен", "desc": "", "photo": "" }
+      ]
+    }
+  ]
+},
+
+
+
+
+
+
+
+
+{
+  "id": "fam2",
+  "name": "Сарыбай",
+  "birth": "",
+  "city": "Оскемен",
+  "desc": "",
+  "photo": "",
+  "tag": "blood",
+  "partner": { "id": "fam2_p", "name": "Ляйля", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+  "children": [
+    {
+      "id": "fam2_c1",
+      "name": "Ерсин",
+      "birth": "",
+      "city": "Оскемен",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+      "partner": { "id": "fam2_c1_p", "name": "Арай", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "children": [
+        { "id": "fam2_c1_c1", "name": "Аяла", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+        { "id": "fam2_c1_c2", "name": "Асылым", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "fam2_c2",
+      "name": "Ерназ",
+      "birth": "",
+      "city": "Оскемен",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+      "partner": { "id": "fam2_c2_p", "name": "Аружан", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "children": [
+        { "id": "fam2_c2_c1", "name": "Ансар", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+        { "id": "fam2_c2_c2", "name": "Хамза", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
+      ]
+    },
+    { "id": "fam2_c3", "name": "Меруерт", "birth": "", "city": "Оскемен", "desc": "", "photo": "", "tag": "blood" },
+    {
+      "id": "fam2_c4",
+      "name": "Ернар",
+      "birth": "",
+      "city": "Оскемен",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+      "partner": { "id": "fam2_c4_p", "name": "Акерке", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+      "children": [
+        { "id": "fam2_c4_c1", "name": "Тимур", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+        { "id": "fam2_c4_c2", "name": "Еркем", "birth": "", "city": "Оскемен", "desc": "", "photo": "" },
+        { "id": "fam2_c4_c3", "name": "Коркем", "birth": "", "city": "Оскемен", "desc": "", "photo": "" }
+      ]
+    },
+    { "id": "fam2_c5", "name": "Айдос", "birth": "", "city": "Оскемен", "desc": "", "photo": "photos/Айдос.jpeg", "tag": "blood" }
+  ]
+},
+
+
+
+
+
+
+
+{
+  "id": "fam3",
+  "name": "Болат",
+  "birth": "",
+  "city": "",
+  "desc": "",
+  "photo": "",
+  "tag": "blood",
+  "partner": {
+    "id": "fam3_p",
+    "name": "Бакыт",
+    "birth": "",
+    "city": "",
+    "desc": "",
+    "photo": ""
+  },
+  "children": [
+    {
+      "id": "fam3_c1",
+      "name": "Еркин", 
+      "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+      "partner": {
+        "id": "fam3_c1_p",
+        "name": "Дидар", 
+        "birth": "", "city": "", "desc": "", "photo": ""
+      },
+      "children": [
+        { "id": "fam3_c1_c1", "name": "Зере",    "birth": "", "city": "", "desc": "", "photo": "" },
+        { "id": "fam3_c1_c2", "name": "Томирис", "birth": "", "city": "", "desc": "", "photo": "" },
+        { "id": "fam3_c1_c3", "name": "Альтаир", "birth": "", "city": "", "desc": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "fam3_c2",
+      "name": "Альбина",
+      "birth": "",
+      "city": "",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+      "partner": {
+        "id": "fam3_c2_p",
+        "name": "Махмут",
+        "birth": "",
+        "city": "",
+        "desc": "",
+        "photo": ""
+      },
+      "children": [
+        { "id": "fam3_c2_c1", "name": "Мансур", "birth": "", "city": "", "desc": "", "photo": "" },
+        { "id": "fam3_c2_c2", "name": "Амир",   "birth": "", "city": "", "desc": "", "photo": "" },
+        { "id": "fam3_c2_c3", "name": "Елнур",  "birth": "", "city": "", "desc": "", "photo": "" },
+        { "id": "fam3_c2_c4", "name": "Айсана", "birth": "", "city": "", "desc": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "fam3_c3",
+      "name": "Анель",
+      "birth": "",
+      "city": "",
+      "desc": "",
+      "photo": ""
+    }
+  ]
+},
+
+{
+  "id": "fam4",
+  "name": "Гульмира",
+  "birth": "",
+  "city": "",
+  "desc": "",
+  "photo": "",
+  "tag": "blood",
+  "partner": {
+    "id": "fam4_p",
+    "name": "Мурат",
+    "birth": "",
+    "city": "",
+    "desc": "",
+    "photo": ""
+  },
+  "children": [
+    {
+      "id": "fam4_c1",
+      "name": "Амангельди",
+      "birth": "",
+      "city": "",
+      "desc": "",
+      "photo": "Photos/Асека.jpeg",
+      "tag": "blood",
+      "partner": {
+        "id": "fam4_c1_p",
+        "name": "Ажар",
+        "birth": "",
+        "city": "",
+        "desc": "",
+        "photo": "photos/Ажар.jpeg"
+      },
+      "children": [
+        { "id": "fam4_c1_c1", "name": "Исмаил", "birth": "", "city": "", "desc": "", "photo": "Photos/Isa.jpg" }
+      ]
+    },
+    { "id": "fam4_c2", "name": "Гамир", "birth": "", "city": "", "desc": "", "photo": "" }
+  ]
+},
+
+
+
+{ "id": "fam5", "name": "Амльмира", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+  "children": [
+    { "id": "fam5_c1", "name": "Жалгас", "birth": "", "city": "", "desc": "", "photo": "" }
+  ]
+},
+
+
+
+{ "id": "fam6", "name": "Касым Ага", "birth": "1972-08-27", "photo": "", "tag": "blood",
+  "partner": { 
+  "id": "fam6_p", "name": "Шинар Апай", "birth": "1979-01-19", "photo": "" },
+  "children": [
+    { "id": "fam6_c1", "name": "Елдос", "birth": "2001-10-14", "photo": "", "tag": "blood",
+      "partner": { "id": "fam6_c1_p", "name": "Аружан", "birth": "", "photo": "" }},
+
+    { "id": "fam6_c2", "name": "Аида", "birth": "2004-03-01", "photo": "" },
+    { "id": "fam6_c3", "name": "Аяна", "birth": "2015-01-11", "photo": "" }
+  ]
+},
+
+
+
+{
+  "id": "fam7", "name": "Жанат", "birth": "", "city": "", "desc": "", "photo": "", "tag": "blood",
+  "partner": { 
+  "id": "fam7_p", "name": "Айдын", "birth": "", "city": "", "desc": "", "photo": "" },
+  "children": [
+    { "id": "fam7_c1", "name": "Айбол", "birth": "", "city": "", "desc": "", "photo": "" },
+    { "id": "fam7_c2", "name": "Диана", "birth": "", "city": "", "desc": "", "photo": "" }
+    ]
+   }
+  ]
+}

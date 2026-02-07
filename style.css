@@ -12,7 +12,7 @@ body{
 }
 
 .header{
-  padding: 2px;
+  padding: 0px;
   background: #f2f4f8; /* фон шапки */
 }
 
@@ -24,7 +24,7 @@ body{
 }
 
 .controls button {
-  padding: 8px 12px;
+  padding: 5px 20px;
   border-radius: 10px;
   border: 1px solid #000000;
   background: #f7fff5;
@@ -213,4 +213,54 @@ body{
   stroke: #000 !important;
   stroke-width: 2;
   fill: none;
+}
+
+
+
+.tabs{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.tab{
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.tab.is-active{
+  background: #000;
+  color: #fff;
+}
+
+
+/* ===== Header layout ===== */
+.header-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* РАЗНОСИМ ГРУППЫ */
+  gap: 40px;
+  padding: 8px 16px;
+}
+
+/* вкладки слева */
+.tabs{
+  display: flex;
+  gap: 10px;
+}
+
+/* кнопки управления справа */
+.controls{
+  display: flex;
+  gap: 10px;
+}
+
+/* дополнительное расстояние (если нужно ещё дальше) */
+.controls-spaced{
+  margin-left: auto; /* гарантированно уедут вправо */
 }

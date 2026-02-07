@@ -1,0 +1,264 @@
+{
+  "id": "root",
+  "name": "Балауса Апа",
+  "birth": "0000-00-00",
+  "city": "",
+  "desc": "",
+  "photo": "photos/babushka.jpg",
+  "partner": {
+    "id": "root_p",
+    "name": "Мухтар Ата",
+    "birth": "0000-00-00",
+    "city": "",
+    "desc": "",
+    "photo": "photos/dedushka.jpg"
+  },
+  "children": [
+    {
+      "id": "fam1",
+      "name": "Салтанат Апай",
+      "birth": "0000-00-00",
+      "city": "Оскемен",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+
+
+      "partner": {
+        "id": "fam1_p",
+        "name": "Кайыржан Ата",
+        "birth": "0000-00-00",
+        "city": "Оскемен",
+        "desc": "",
+        "photo": ""
+      },
+      "children": [
+        {
+          "id": "fam1_c1",
+          "name": "Назкен",
+          "birth": "0000-12-17",
+          "city": "Шымкент",
+          "desc": "",
+          "photo": "",
+          "children": []
+        },
+        {
+          "id": "fam1_c2",
+          "name": "Еркин",
+          "birth": "0000-08-27",
+          "city": "Оскемен",
+          "desc": "",
+          "photo": "",
+
+          "children": [
+            {
+                "id": "fam1_c2",
+                "name": "Айым",
+                 "birth": "0000-06-04",
+                 "city": "Оскемен",
+                 "desc": "",
+                 "photo": ""
+            },
+            {
+                          "id": "fam1_c2",
+          "name": "Арман",
+          "birth": "0000-12-08",
+          "city": "Оскемен",
+          "desc": "",
+          "photo": ""
+            }
+          ]
+        }
+      ]
+    },
+
+
+
+
+
+
+
+    {
+      "id": "fam2",
+      "name": "Бальзок Нане",
+      "birth": "0000-04-13",
+      "city": "Oskemen",
+      "desc": "",
+      "photo": "photos/c2.jpg",
+      "tag": "blood",
+
+
+      "partner": {
+        "id": "fam2_p",
+        "name": "Женя Ата",
+        "birth": "0000-00-00",
+        "city": "Oskemen",
+        "desc": "",
+        "photo": "photos/c2p.jpg"
+      },
+      "children": [
+        {
+          "id": "fam2_c1",
+          "name": "Акжаркын Ага",
+          "birth": "1993-04-09",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": "",
+          "tag": "blood",
+          "partner": {
+            "id": "fam2_c1_p",
+            "name": "Тогжан женге",
+            "birth": "0000-08-31",
+            "city": "Oskemen",
+            "desc": "",
+            "photo": ""
+          },
+          "children": [
+            {
+                 "id": "fam2_c1",
+                 "name": "Тайыр",
+                 "birth": "2024-07-17",
+                 "city": "Oskemen",
+                 "desc": "",
+                 "photo": ""
+            }
+          ]
+        },
+        {
+          "id": "fam2_c2",
+          "name": "Улан ага",
+          "birth": "1994-10-03",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": "",
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "fam3",
+      "name": "Айдар Ага",
+      "birth": "0000-04-14",
+      "city": "Oskemen",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+
+      "partner": {
+        "id": "fam3_p",
+        "name": "Тетя Света",
+        "birth": "1973-12-29",
+        "city": "Oskemen",
+        "desc": "",
+        "photo": ""
+      },
+      "children": [
+        {
+          "id": "fam3_c1",
+          "name": "Дакось",
+          "birth": "2008-09-26",
+          "city": "Oviedo",
+          "desc": "",
+          "photo": "",
+          "children": []
+        },
+        {
+          "id": "fam3_c2",
+          "name": "Диана",
+          "birth": "2016-07-07",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": "",
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "fam4",
+      "name": "Саулет Нане",
+      "birth": "0000-04-18",
+      "city": "Oskemen",
+      "desc": "",
+      "photo": "",
+      "tag": "blood",
+
+      "partner": {
+        "id": "fam4_p",
+        "name": "ТуранБей",
+        "birth": "0000-00-00",
+        "city": "Oskemen",
+        "desc": "",
+        "photo": ""
+      },
+      "children": [
+        {
+          "id": "fam4_c1",
+          "name": "Азат Ага",
+          "birth": "1992-12-16",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": "",
+            "tag": "blood",
+
+          "partner": {
+            "id": "fam4_c1_p",
+            "name": "Алия женге",
+            "birth": "0000-11-28",
+            "city": "Oskemen",
+            "desc": "",
+            "photo": ""
+          },
+          "children": [
+            {
+                "id": "fam4_c1",
+          "name": "Амира",
+          "birth": "2023-10-24",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": ""
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "fam5",
+      "name": "Папа",
+      "birth": "1977-03-25",
+      "city": "Oskemen",
+      "desc": "",
+      "photo": "",
+      "partner": {
+        "id": "fam5_p",
+        "name": "Мама",
+        "birth": "1978-07-05",
+        "city": "Oskemen",
+        "desc": "",
+        "photo": ""
+      },
+      "children": [
+        {
+          "id": "fam5_c1",
+          "name": "Я",
+          "birth": "2003-05-22",
+          "city": "Astana",
+          "desc": "",
+          "photo": "",
+          "children": []
+        },
+        {
+          "id": "fam5_c2",
+          "name": "Даяна",
+          "birth": "2009-08-03",
+          "city": "Oskemen",
+          "desc": "",
+          "photo": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

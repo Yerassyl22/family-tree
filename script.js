@@ -1,55 +1,38 @@
-async function loadFamily() {
-  const res = await fetch("family.json");
-  if (!res.ok) throw new Error("Не удалось загрузить family.json");
+// =====================
+// Load JSON
+// =====================
+async function loadFamily(file = "family1.json") {
+  const res = await fetch(file);
+  if (!res.ok) throw new Error("Не удалось загрузить " + file);
   return await res.json();
 }
 
-function formatDate(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  if (isNaN(d)) return dateStr;
-  return d.toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" });
-}
-
-function calcAge(dateStr) {
-  if (!dateStr) return null;
-  const dob = new Date(dateStr);
-  if (isNaN(dob)) return null;
-
-  const t = new Date();
-  let age = t.getFullYear() - dob.getFullYear();
-  const m = t.getMonth() - dob.getMonth();
-  if (m < 0 || (m === 0 && t.getDate() < dob.getDate())) age--;
-  return age;
-}
-
-function ageWord(age){
+// =====================
+// Date / Age helpers
+// =====================
+function ageWord(age) {
   if (age % 10 === 1 && age % 100 !== 11) return "год";
-  if ([2,3,4].includes(age % 10) && ![12,13,14].includes(age % 100)) return "года";
+  if ([2, 3, 4].includes(age % 10) && ![12, 13, 14].includes(age % 100)) return "года";
   return "лет";
 }
 
-
+// "12 января 1977" + "48 лет" (2 строки)
 function birthLine(p) {
   if (!p.birth) return "";
 
   const date = new Date(p.birth);
   if (isNaN(date)) return "";
 
-  // полная дата: 12 января 1977
   const fullDate = date.toLocaleDateString("ru-RU", {
     day: "2-digit",
     month: "long",
     year: "numeric",
   });
 
-  // возраст
   const today = new Date();
   let age = today.getFullYear() - date.getFullYear();
   const m = today.getMonth() - date.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < date.getDate())) {
-    age--;
-  }
+  if (m < 0 || (m === 0 && today.getDate() < date.getDate())) age--;
 
   return `
     <div class="birth-date">${fullDate}</div>
@@ -57,13 +40,14 @@ function birthLine(p) {
   `;
 }
 
-
-
+// =====================
+// Tree build
+// =====================
 function closeAllInside(container) {
   container.querySelectorAll(".children.open").forEach((el) => el.classList.remove("open"));
 }
 
-function personHTML(p){
+function personHTML(p) {
   const tagClass = p.tag ? ` tag-${p.tag}` : "";
   return `
     <div class="person${tagClass}">
@@ -77,8 +61,6 @@ function personHTML(p){
     </div>
   `;
 }
-
-
 
 /* 1 карточка = семья (1 или 2 человека) */
 function createFamilyCard(person, clickable) {
@@ -133,7 +115,9 @@ function createNode(person) {
   return wrap;
 }
 
-/* ===== Buttons ===== */
+// =====================
+// Buttons
+// =====================
 function expandAll() {
   document.querySelectorAll(".children").forEach((el) => el.classList.add("open"));
   redrawLinesSafe();
@@ -145,22 +129,24 @@ function collapseAll() {
   requestAnimationFrame(() => window.__centerRoot && window.__centerRoot());
 }
 
-/* ===== Lines (board coords) ===== */
+// =====================
+// Lines (board coords)
+// =====================
 function redrawLines() {
   const svg = document.getElementById("lines");
   const board = document.getElementById("board");
-  if (!svg || !board) return;
+  const tree = document.getElementById("tree");
+  if (!svg || !board || !tree) return;
 
   svg.innerHTML = "";
   const svgNS = "http://www.w3.org/2000/svg";
-  // растянуть svg под размеры дерева (чтобы ничего не обрезалось)
-const tree = document.getElementById("tree");
-const w = Math.max(tree.scrollWidth, 5000);
-const h = Math.max(tree.scrollHeight, 5000);
-svg.setAttribute("width", w);
-svg.setAttribute("height", h);
-svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
 
+  // растянуть svg под размеры дерева (чтобы ничего не обрезалось)
+  const w = Math.max(tree.scrollWidth, 5000);
+  const h = Math.max(tree.scrollHeight, 5000);
+  svg.setAttribute("width", w);
+  svg.setAttribute("height", h);
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
 
   function line(x1, y1, x2, y2) {
     const l = document.createElementNS(svgNS, "line");
@@ -168,7 +154,7 @@ svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
     l.setAttribute("y1", y1);
     l.setAttribute("x2", x2);
     l.setAttribute("y2", y2);
-    l.setAttribute("stroke", "#000000ff");
+    l.setAttribute("stroke", "#000");
     l.setAttribute("stroke-width", "2");
     l.setAttribute("stroke-linecap", "round");
     svg.appendChild(l);
@@ -188,41 +174,40 @@ svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
       `M ${x1} ${y1}`,
       `L ${hx} ${y1}`,
       `Q ${x2} ${y1} ${x2} ${hy}`,
-      `L ${x2} ${y2}`
+      `L ${x2} ${y2}`,
     ].join(" ");
 
     const p = document.createElementNS(svgNS, "path");
     p.setAttribute("d", d);
     p.setAttribute("fill", "none");
-    p.setAttribute("stroke", "#000000ff");
+    p.setAttribute("stroke", "#000");
     p.setAttribute("stroke-width", "2");
     p.setAttribute("stroke-linecap", "round");
     p.setAttribute("stroke-linejoin", "round");
     svg.appendChild(p);
   }
 
-function posRelativeToBoard(el, board) {
-  let x = 0, y = 0;
-  let cur = el;
-  while (cur && cur !== board) {
-    x += cur.offsetLeft || 0;
-    y += cur.offsetTop || 0;
-    cur = cur.offsetParent;
+  function posRelativeToBoard(el, boardEl) {
+    let x = 0,
+      y = 0;
+    let cur = el;
+    while (cur && cur !== boardEl) {
+      x += cur.offsetLeft || 0;
+      y += cur.offsetTop || 0;
+      cur = cur.offsetParent;
+    }
+    return { x, y };
   }
-  return { x, y };
-}
 
-function anchorBottom(card) {
-  const p = posRelativeToBoard(card, board);
-  return { x: p.x + card.offsetWidth / 2, y: p.y + card.offsetHeight };
-}
+  function anchorBottom(card) {
+    const p = posRelativeToBoard(card, board);
+    return { x: p.x + card.offsetWidth / 2, y: p.y + card.offsetHeight };
+  }
 
-function anchorTop(card) {
-  const p = posRelativeToBoard(card, board);
-  return { x: p.x + card.offsetWidth / 2, y: p.y };
-}
-
-
+  function anchorTop(card) {
+    const p = posRelativeToBoard(card, board);
+    return { x: p.x + card.offsetWidth / 2, y: p.y };
+  }
 
   // линии: рисуем только для открытых children
   document.querySelectorAll(".node").forEach((node) => {
@@ -237,12 +222,11 @@ function anchorTop(card) {
     const p = anchorBottom(parentCard);
     const children = Array.from(childCards).map(anchorTop);
 
-    const junctionY = p.y + 26;
-    const gapTop = 0;   // не доходить до карточки
-    const radius = 10;   // скругление угла
+    const junctionY = p.y + 26; // длина вертикали
+    const gapTop = 0;           // доходить до карточки
+    const radius = 10;          // изгиб
 
     line(p.x, p.y, p.x, junctionY);
-
     children.forEach((c) => {
       const targetY = c.y - gapTop;
       elbow(p.x, junctionY, c.x, targetY, radius);
@@ -261,17 +245,21 @@ function redrawLinesSafe() {
   });
 }
 
-
-/* ===== Pan/Zoom + center root ===== */
+// =====================
+// Pan/Zoom + center root
+// =====================
 function setupPanZoom() {
   const viewport = document.getElementById("viewport");
   const board = document.getElementById("board");
   if (!viewport || !board) return;
 
-  let x = 60, y = 80, scale = 1;
+  let x = 60,
+    y = 80,
+    scale = 1;
 
   let dragging = false;
-  let startX = 0, startY = 0;
+  let startX = 0,
+    startY = 0;
 
   function apply() {
     board.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
@@ -285,8 +273,8 @@ function setupPanZoom() {
     const vw = viewport.clientWidth;
     const cx = rootCard.offsetLeft + rootCard.offsetWidth / 2;
 
-    x = vw / 2 - cx * scale; // центр по X
-    y = 90;                  // отступ сверху
+    x = vw / 2 - cx * scale;
+    y = 90;
     apply();
   }
 
@@ -310,12 +298,16 @@ function setupPanZoom() {
   window.addEventListener("mouseup", () => (dragging = false));
 
   // wheel zoom
-  viewport.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    const zoom = e.deltaY < 0 ? 1.08 : 0.92;
-    scale = Math.min(2.5, Math.max(0.5, scale * zoom));
-    apply();
-  }, { passive: false });
+  viewport.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      const zoom = e.deltaY < 0 ? 1.08 : 0.92;
+      scale = Math.min(2.5, Math.max(0.5, scale * zoom));
+      apply();
+    },
+    { passive: false }
+  );
 
   // touch pinch/drag
   let lastDist = null;
@@ -324,37 +316,48 @@ function setupPanZoom() {
   const dist = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
   const mid = (a, b) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 });
 
-  viewport.addEventListener("touchstart", (e) => {
-    if (e.touches.length === 1) {
-      dragging = true;
-      startX = e.touches[0].clientX - x;
-      startY = e.touches[0].clientY - y;
-    } else if (e.touches.length === 2) {
-      dragging = false;
-      lastDist = dist(e.touches[0], e.touches[1]);
-      lastMid = mid(e.touches[0], e.touches[1]);
-    }
-  }, { passive: false });
+  viewport.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length === 1) {
+        dragging = true;
+        startX = e.touches[0].clientX - x;
+        startY = e.touches[0].clientY - y;
+      } else if (e.touches.length === 2) {
+        dragging = false;
+        lastDist = dist(e.touches[0], e.touches[1]);
+        lastMid = mid(e.touches[0], e.touches[1]);
+      }
+    },
+    { passive: false }
+  );
 
-  viewport.addEventListener("touchmove", (e) => {
-    e.preventDefault();
+  viewport.addEventListener(
+    "touchmove",
+    (e) => {
+      e.preventDefault();
 
-    if (e.touches.length === 1 && dragging) {
-      x = e.touches[0].clientX - startX;
-      y = e.touches[0].clientY - startY;
-      apply();
-    } else if (e.touches.length === 2) {
-      const d = dist(e.touches[0], e.touches[1]);
-      const m = mid(e.touches[0], e.touches[1]);
+      if (e.touches.length === 1 && dragging) {
+        x = e.touches[0].clientX - startX;
+        y = e.touches[0].clientY - startY;
+        apply();
+      } else if (e.touches.length === 2) {
+        const d = dist(e.touches[0], e.touches[1]);
+        const m = mid(e.touches[0], e.touches[1]);
 
-      if (lastDist) scale = Math.min(2.5, Math.max(0.5, scale * (d / lastDist)));
-      if (lastMid) { x += (m.x - lastMid.x); y += (m.y - lastMid.y); }
+        if (lastDist) scale = Math.min(2.5, Math.max(0.5, scale * (d / lastDist)));
+        if (lastMid) {
+          x += m.x - lastMid.x;
+          y += m.y - lastMid.y;
+        }
 
-      lastDist = d;
-      lastMid = m;
-      apply();
-    }
-  }, { passive: false });
+        lastDist = d;
+        lastMid = m;
+        apply();
+      }
+    },
+    { passive: false }
+  );
 
   viewport.addEventListener("touchend", () => {
     dragging = false;
@@ -367,22 +370,47 @@ function setupPanZoom() {
   window.__centerRoot = centerRoot;
 }
 
-/* ===== Init ===== */
+// =====================
+// Tabs: renderTree(file)
+// =====================
+async function renderTree(file) {
+  const data = await loadFamily(file);
+
+  const tree = document.getElementById("tree");
+  tree.innerHTML = "";
+  tree.appendChild(createNode(data));
+
+  redrawLinesSafe();
+  requestAnimationFrame(() => window.__centerRoot && window.__centerRoot());
+}
+
+// =====================
+// Init
+// =====================
 (async function init() {
   try {
-    const data = await loadFamily();
-    const tree = document.getElementById("tree");
-    tree.innerHTML = "";
-    tree.appendChild(createNode(data));
-
+    // Кнопки разворачивания/сворачивания
     document.getElementById("expandAll")?.addEventListener("click", expandAll);
     document.getElementById("collapseAll")?.addEventListener("click", collapseAll);
 
+    // Вкладки (если есть в HTML)
+    document.querySelectorAll(".tab").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        document.querySelectorAll(".tab").forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        await renderTree(btn.dataset.file);
+      });
+    });
+
+    // Загружаем первое дерево
+    await renderTree("family1.json");
+
+    // Pan/zoom и линии
     setupPanZoom();
     redrawLinesSafe();
   } catch (e) {
     const tree = document.getElementById("tree");
-    if (tree) tree.textContent = "Ошибка загрузки. Проверь family.json и фото.";
+    if (tree) tree.textContent = "Ошибка загрузки. Проверь JSON и фото.";
     console.error(e);
   }
 })();

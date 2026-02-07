@@ -1,0 +1,15 @@
+{
+  "id": "root",
+  "name": "Балауса Апа",
+  "birth": "0000-00-00",
+  "city": "",
+  "desc": "",
+  "photo": "photos/babushka.jpg",
+  "partner": {
+    "id": "root_p",
+    "name": "Мухтар Ата",
+    "birth": "0000-00-00",
+    "city": "",
+    "desc": "",
+    "photo": "photos/dedushka.jpg"
+  }}

@@ -56,7 +56,7 @@
                  "birth": "0000-06-04",
                  "city": "Оскемен",
                  "desc": "",
-                 "photo": "papa/aiym.jpg"
+                 "photo": "papa/aiym.png"
             },
             {
           "id": "fam1_c2",
@@ -228,7 +228,7 @@
           "id": "fam5_c1",
           "name": "YERASSYL",
           "birth": "2003-05-22",
-          "photo": "papa/me.jpg"
+          "photo": "papa/me.png"
         },
         {
           "id": "fam5_c2",

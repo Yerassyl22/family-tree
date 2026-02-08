@@ -129,7 +129,7 @@
           "birth": "1994-10-03",
           "city": "Oskemen",
           "desc": "",
-          "photo": "",
+          "photo": "papa/ulan.png",
           "children": []
         }
       ]
@@ -228,7 +228,7 @@
           "id": "fam5_c1",
           "name": "YERASSYL",
           "birth": "2003-05-22",
-          "photo": ""
+          "photo": "papa/me.png"
         },
         {
           "id": "fam5_c2",
